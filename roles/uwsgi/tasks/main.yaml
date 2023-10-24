@@ -1,0 +1,22 @@
+- name: Install uwsgi
+  ansible.builtin.apt:
+    name: uwsgi
+    state: present
+- name: Install uwsgi-plugin-python3
+  ansible.builtin.apt:
+    name: uwsgi-plugin-python3
+    state: present
+- name: Copy file agama.ini with owner and permission and restart uwsgi
+  ansible.builtin.copy:
+    src: agama.ini
+    dest: /etc/uwsgi/apps-enabled/agama.ini
+    owner: agama
+    group: agama
+    mode: '0644'
+  notify:
+    Restart uwsgi
+- name: uWSGI service is running
+  service:
+    name: uwsgi
+    state: started
+    enabled: true

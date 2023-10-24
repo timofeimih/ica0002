@@ -2,3 +2,14 @@
   ansible.builtin.apt:
     name: nginx
     state: present
+- name: Copy file default with owner and permission and restart uwsgi
+  ansible.builtin.copy:
+    src: default
+    dest: /etc/nginx/sites-enabled/default
+  notify:
+    Restart nginx
+- name: nginx service is running
+  service:
+    name: nginx
+    state: started
+    enabled: true

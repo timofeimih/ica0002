@@ -2,7 +2,11 @@
   - name: Initial setup
     hosts: all
     roles:
-      # - init
+      - init
+  - name: Mysql setup
+    hosts: db_servers
+    roles: 
+      - mysql
   - name: Web server setup
     hosts: web_servers
     roles:

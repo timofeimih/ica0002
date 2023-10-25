@@ -1,14 +1,16 @@
 - name: Add user 'agama'
-  ansible.builtin.user:
+  user:
     name: agama
 - name: Create a directory if it does not exists /opt/agama
-  ansible.builtin.file:
+  file:
     path: /opt/agama
     state: 'directory'
     owner: agama
 - name: Install python3-flask-sqlalchemy
-  ansible.builtin.apt:
-    name: python3-flask-sqlalchemy
+  apt:
+    name: 
+      - python3-flask-sqlalchemy
+      - python3-pymysql
     state: present
 - name: Download agama.py
   ansible.builtin.get_url:

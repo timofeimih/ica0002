@@ -1,4 +1,8 @@
-infrastructure ansible_host=193.40.156.67 ansible_port=19422 ansible_user=ubuntu
+timofeimih-1 ansible_host=193.40.156.67 ansible_port=43122 ansible_user=ubuntu
+timofeimih-2 ansible_host=193.40.156.67 ansible_port=39622 ansible_user=ubuntu
+
+[db_servers]
+timofeimih-2
 
 [web_servers]
-infrastructure
+timofeimih-1

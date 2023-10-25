@@ -1,0 +1,45 @@
+- name: Install mysql-server
+  apt:
+    name: mysql-server
+    state: present
+
+- name: Copy file default with owner and permission and restart uwsgi
+  ansible.builtin.copy:
+    src: override.cnf
+    dest: /etc/mysql/mysql.conf.d/override.cnf
+  notify:
+    Restart mysql
+- name: mysql service is running
+  service:
+    name: mysql
+    state: started
+    enabled: true
+- name: Install python3-pymysql
+  apt:
+    name: python3-pymysql
+    state: present
+- name: MySQL database
+  community.mysql.mysql_db:
+    name: "{{ mysql_database }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+- name: MySQL user
+  community.mysql.mysql_user:
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    host: "%"
+    priv: "{{ mysql_database }}.*:ALL"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+# - name: Install uwsgi-plugin-python3
+#   apt:
+#     name: uwsgi-plugin-python3
+#     state: present
+# - name: Copy file agama.ini with owner and permission and restart uwsgi
+#   ansible.builtin.copy:
+#     src: agama.ini
+#     dest: /etc/uwsgi/apps-enabled/agama.ini
+#     owner: agama
+#     group: agama
+#     mode: '0644'
+#   notify:
+#     Restart uwsgi
+

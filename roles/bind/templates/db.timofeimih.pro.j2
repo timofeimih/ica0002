@@ -1,0 +1,11 @@
+$TTL	604800
+{{ startup_name }}.	IN	SOA	{{ hostvars['timofeimih-1']['inventory_hostname'] }}.{{ startup_name }}. timofei.{{ startup_name }}. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+{{ startup_name }}. IN	NS	{{ hostvars['timofeimih-1']['inventory_hostname'] }}
+{{ hostvars['timofeimih-1']['inventory_hostname'] }}	IN	A	{{ hostvars['timofeimih-1']['address'] }}
+{{ hostvars['timofeimih-2']['inventory_hostname'] }}	IN	A	{{ hostvars['timofeimih-2']['address'] }}

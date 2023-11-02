@@ -13,3 +13,19 @@
       - agama
       - uwsgi
       - nginx
+  - name: DNS server setup
+    hosts: dns_servers
+    roles:
+      - bind
+  - name: resolv.conf configuration
+    hosts: all
+    tasks:
+      - name: systemd-resolved service is stopped
+        service:
+          name: systemd-resolved
+          state: stopped
+          enabled: true
+      - name: Copy file resolv.conf.j2
+        template:
+          src: resolv.conf.j2
+          dest: /etc/resolv.conf

@@ -3,7 +3,7 @@
     name: mysql-server
     state: present
 
-- name: Copy file default with owner and permission and restart uwsgi
+- name: Copy file default with owner and permission and restart mysql
   ansible.builtin.copy:
     src: override.cnf
     dest: /etc/mysql/mysql.conf.d/override.cnf

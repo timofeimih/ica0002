@@ -2,13 +2,13 @@
   apt:
     name: bind9
     state: present
-- name: Copy file named.conf.options.j2 and restart bind9
+- name: Copy file named.conf.options and restart bind9
   template:
     src: named.conf.options.j2
     dest: /etc/bind/named.conf.options
   notify: 
     Restart bind9
-- name: Copy file named.conf.local.j2 and restart bind9
+- name: Copy file named.conf.local and restart bind9
   template:
     src: named.conf.local.j2
     dest: /etc/bind/named.conf.local

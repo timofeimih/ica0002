@@ -2,7 +2,7 @@
   ansible.builtin.apt:
     name: nginx
     state: present
-- name: Copy file default with owner and permission and restart uwsgi
+- name: Copy file default and restart nginx
   ansible.builtin.copy:
     src: default
     dest: /etc/nginx/sites-enabled/default

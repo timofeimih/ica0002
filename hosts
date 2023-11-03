@@ -1,5 +1,5 @@
-timofeimih-1 ansible_host=193.40.156.67 ansible_port=13522 ansible_user=ubuntu address=192.168.42.135
-timofeimih-2 ansible_host=193.40.156.67 ansible_port=6722 ansible_user=ubuntu address=192.168.42.67
+timofeimih-1 ansible_host=193.40.156.67 ansible_port=32022 ansible_user=ubuntu address=192.168.43.64 address_port=32080
+timofeimih-2 ansible_host=193.40.156.67 ansible_port=38022 ansible_user=ubuntu address=192.168.43.124
 
 [db_servers]
 timofeimih-2
@@ -9,3 +9,6 @@ timofeimih-2
 
 [web_servers]
 timofeimih-1
+
+[monitoring]
+timofeimih-2

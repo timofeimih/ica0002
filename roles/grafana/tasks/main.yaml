@@ -43,11 +43,6 @@
   notify: 
     - Restart grafana-server
 
-- name: Create grafana user-2
-  community.grafana.grafana_user:
-    url: http://{{ hostvars['timofeimih-1'].ansible_host }}:{{ hostvars['timofeimih-1'].ansible_port + 58 }}/grafana/
-    login: timofeimih
-    state: absent
 - name: Create grafana user
   community.grafana.grafana_user:
     url: http://{{ hostvars['timofeimih-1'].ansible_host }}:{{ hostvars['timofeimih-1'].ansible_port + 58 }}/grafana/

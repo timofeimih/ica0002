@@ -1,0 +1,69 @@
+- name: Install apt-transport-https and software-properties-common
+  apt:
+    name: 
+      - apt-transport-https
+      - software-properties-common
+    state: present
+- name: Create a directory if it does not exists /etc/apt/keyrings
+  file:
+    path: /etc/apt/keyrings
+    state: 'directory'
+- name: Download https://apt.grafana.com/gpg.key
+  get_url:
+    url: https://apt.grafana.com/gpg.key
+    dest: /etc/apt/keyrings/grafana.asc
+- name: Add grafana repository
+  apt_repository: 
+    filename: grafana
+    repo: "deb [signed-by=/etc/apt/keyrings/grafana.asc] https://apt.grafana.com stable main"
+    update_cache: yes
+    state: present
+- name: Install grafana
+  apt:
+    name: grafana
+- name: Configurate grafana
+  template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+  notify: 
+    - Restart grafana-server
+- block:
+  - name: Configurate datasources
+    copy:
+      src: prometheus.yaml
+      dest: /etc/grafana/provisioning/datasources/default.yaml
+  - name: Configurate dashboards
+    copy:
+      src: dashboard.json
+      dest: /var/lib/grafana/dashboards/
+  - name: Configurate dashboards provising
+    copy:
+      src: default.yaml
+      dest: /etc/grafana/provisioning/dashboards/
+  notify: 
+    - Restart grafana-server
+
+- name: Create grafana user-2
+  community.grafana.grafana_user:
+    url: http://{{ hostvars['timofeimih-1'].ansible_host }}:{{ hostvars['timofeimih-1'].ansible_port + 58 }}/grafana/
+    login: timofeimih
+    state: absent
+- name: Create grafana user
+  community.grafana.grafana_user:
+    url: http://{{ hostvars['timofeimih-1'].ansible_host }}:{{ hostvars['timofeimih-1'].ansible_port + 58 }}/grafana/
+    url_username: ***REMOVED***
+    url_password: ***REMOVED***
+    name: "Timofei Mihhailov"
+    login: "{{ grafana_user }}"
+    password: "{{ grafana_password }}"
+    email: "{{ grafana_email }}"
+    is_***REMOVED***: true
+    state: present
+
+- service:
+    enabled: yes
+    name: "{{ item }}"
+    state: started
+  loop:
+    - grafana-server
+    

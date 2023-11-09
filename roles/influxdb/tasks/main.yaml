@@ -1,0 +1,29 @@
+- name: Create a directory if it does not exists /etc/apt/keyrings
+  file:
+    path: /home
+    state: 'directory'
+- name: Download InfluxDB
+  get_url:
+    url: https://dl.influxdata.com/influxdb/releases/influxdb_1.8.10_amd64.deb
+    dest: /home
+
+- name: Install InfluxDB
+  apt: deb=/home/influxdb_1.8.10_amd64.deb
+
+- name: Remove InfluxDB install file
+  file:
+    path: /home/influxdb_1.8.10_amd64.deb
+    state: absent
+# - name: Download https://apt.grafana.com/gpg.key
+#   get_url:
+#     url: https://apt.grafana.com/gpg.key
+#     dest: /etc/apt/keyrings/grafana.asc
+# - name: Add grafana repository
+#   apt_repository: 
+#     filename: grafana
+#     repo: "deb [signed-by=/etc/apt/keyrings/grafana.asc] https://apt.grafana.com stable main"
+#     update_cache: yes
+#     state: present
+# - name: Install grafana
+#   apt:
+#     name: grafana

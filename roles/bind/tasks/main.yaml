@@ -14,13 +14,30 @@
     dest: /etc/bind/named.conf.local
   notify: 
     Restart bind9
-- name: Copy file db.timofeimih.pro, restart bind9 and RNDC reload
+- name: Copy file db.{{ startup_name }}, restart bind9 and RNDC reload
   template:
-    src: db.timofeimih.pro.j2
-    dest: /etc/bind/db.timofeimih.pro
+    src: db.{{ startup_name }}.j2
+    dest: /etc/bind/db.{{ startup_name }}
   notify: 
     - Restart bind9
     - RNDC reload
+- name: Service bind9 is running
+  service:
+    name: bind9
+    state: started
+    enabled: true
+- name: Install prometheus-bind-exporter
+  apt:
+    name: prometheus-bind-exporter
+    state: present
+
+- service:
+    enabled: yes
+    name: "{{ item }}"
+    state: started
+  loop:
+    - bind9
+    - prometheus-bind-exporter
     
 # - name: run setup
 #   setup:

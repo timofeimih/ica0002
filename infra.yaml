@@ -1,36 +1,50 @@
 ---
-  # - name: Initial setup
-  #   hosts: all
-  #   roles:
-  #     - init
-  # - name: DNS server setup
-  #   hosts: dns_servers
-  #   roles:
-  #     - bind
-  # - name: resolv.conf configuration
-  #   hosts: all
-  #   tasks:
-  #     - name: systemd-resolved service is stopped
-  #       service:
-  #         name: systemd-resolved
-  #         state: stopped
-  #         enabled: true
-  #     - name: Copy file resolv.conf.j2
-  #       template:
-  #         src: resolv.conf.j2
-  #         dest: /etc/resolv.conf
-  # - name: Mysql setup
-  #   hosts: db_servers
-  #   roles: 
-  #     - mysql
-  # - name: Web server setup
-  #   hosts: web_servers
-  #   roles:
-  #     - agama
-  #     - uwsgi
-  #     - nginx
-  
+  - name: Initial setup
+    hosts: all
+    roles:
+      - init
+    tags: init
+  - name: DNS server setup
+    hosts: dns_servers
+    roles:
+      - bind
+    tags: d
+  - name: resolv.conf configuration
+    hosts: all
+    tasks:
+      - name: systemd-resolved service is stopped
+        service:
+          name: systemd-resolved
+          state: stopped
+          enabled: true
+      - name: Copy file resolv.conf.j2
+        template:
+          src: resolv.conf.j2
+          dest: /etc/resolv.conf
+  - name: Mysql setup
+    hosts: db_servers
+    roles: 
+      - mysql
+    tags: m
+  - name: Web server setup
+    hosts: web_servers
+    roles:
+      - agama
+      - uwsgi
+      - nginx
+    tags: n
   - name: Prometheus setup
     hosts: monitoring
     roles:
       - prometheus
+    tags: p
+  - name: Grafana setup
+    hosts: grafana
+    roles:
+      - grafana
+    tags: g
+  - name: Influxdb setup
+    hosts: influxdb
+    roles:
+      - influxdb
+    tags: i

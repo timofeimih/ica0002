@@ -3,3 +3,7 @@
   service:
     name: nginx
     state: restarted
+- name: Restart prometheus-nginx-exporter
+  service:
+    name: prometheus-nginx-exporter
+    state: restarted

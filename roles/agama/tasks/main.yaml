@@ -1,3 +1,9 @@
+- name: Install python3-flask-sqlalchemy
+  apt:
+    name: 
+      - python3-flask-sqlalchemy
+      - python3-pymysql
+    state: present
 - name: Add user 'agama'
   user:
     name: agama
@@ -6,13 +12,7 @@
     path: /opt/agama
     state: 'directory'
     owner: agama
-- name: Install python3-flask-sqlalchemy
-  apt:
-    name: 
-      - python3-flask-sqlalchemy
-      - python3-pymysql
-    state: present
 - name: Download agama.py
-  ansible.builtin.get_url:
+  get_url:
     url: https://raw.githubusercontent.com/hudolejev/agama/master/agama.py
     dest: /opt/agama

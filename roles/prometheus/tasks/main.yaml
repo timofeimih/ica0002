@@ -14,22 +14,3 @@
     dest: /etc/default/prometheus
   notify:
     Restart prometheus
-# - name: Copy file named.conf.local.j2 and restart bind9
-#   template:
-#     src: named.conf.local.j2
-#     dest: /etc/bind/named.conf.local
-#   notify: 
-#     Restart bind9
-# - name: Copy file db.timofeimih.pro, restart bind9 and RNDC reload
-#   template:
-#     src: db.timofeimih.pro.j2
-#     dest: /etc/bind/db.timofeimih.pro
-#   notify: 
-#     - Restart bind9
-#     - RNDC reload
-    
-- name: run setup
-  setup:
-- name: Display all variables/facts known for a host
-  debug:
-    msg: "{{ hostvars['timofeimih-1']['address_port'] }}"

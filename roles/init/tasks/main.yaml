@@ -25,3 +25,15 @@
   apt:
     name: prometheus-node-exporter
     state: present
+- name: Service is prometheus-node-exporter running
+  service:
+    name: prometheus-node-exporter
+    state: started
+    enabled: true
+
+- name: Install ca-certificates
+  apt:
+    name: ca-certificates>=20230311ubuntu0.20.04.1
+    state: present
+
+

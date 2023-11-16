@@ -1,0 +1,24 @@
+---
+- name: Systemd daemon_reload pinger
+  systemd:
+    name: pinger
+    state: restarted
+    daemon_reload: true
+- name: Systemd daemon_reload telegraf
+  systemd:
+    name: telegraf
+    state: restarted
+    daemon_reload: true
+- name: Restart daemon_reload prometheus-influxdb-stats-exporter
+  systemd:
+    name: prometheus-influxdb-stats-exporter
+    state: restarted
+    daemon_reload: true
+- name: Restart telegraf
+  service:
+    name: telegraf
+    state: restarted
+- name: Restart influxb
+  service:
+    name: influxb
+    state: restarted

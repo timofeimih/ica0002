@@ -34,6 +34,7 @@ grafana_password: !vault |
           32303933313935346438323334343330313165326566333430353436313434376238623239333665
           3464326465366131640a353763326237306130303036653539306239646666363633343165306361
           3037
+
 dns_forwarders: 
   - 1.1.1.1
   - 8.8.8.8
@@ -56,3 +57,6 @@ prometheus_jobs:
   - name: nginx
     target_port: 9113
     target_group: web_servers
+  - name: influxdb
+    target_port: 9424
+    target_group: influxdb

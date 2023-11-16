@@ -1,29 +1,94 @@
-- name: Create a directory if it does not exists /etc/apt/keyrings
+- name: Create a directory if it does not exists /home
   file:
-    path: /home
+    path: /usr/local/bin
     state: 'directory'
 - name: Download InfluxDB
   get_url:
     url: https://dl.influxdata.com/influxdb/releases/influxdb_1.8.10_amd64.deb
-    dest: /home
+    dest: /usr/local/bin
 
 - name: Install InfluxDB
-  apt: deb=/home/influxdb_1.8.10_amd64.deb
+  apt: deb=/usr/local/bin/influxdb_1.8.10_amd64.deb
 
-- name: Remove InfluxDB install file
+- block:
+  - name: Install fping
+    apt:
+      name: fping
+      state: present
+  - name: Add user 'pinger'
+    user:
+      name: pinger
+  - name: Copy pinger.sh
+    copy:
+      src: pinger.sh
+      mode: '+x'
+      dest: /usr/local/bin/pinger
+  - name: Copy pinger.service
+    copy:
+      src: pinger.service
+      dest: /etc/systemd/system/
+  - name: Copy pinger.conf
+    copy:
+      src: pinger.conf
+      dest: /etc/pinger/
+  notify:
+    - Systemd daemon_reload pinger
+
+- name: Create a directory if it does not exists /etc/apt/keyrings
   file:
-    path: /home/influxdb_1.8.10_amd64.deb
-    state: absent
-# - name: Download https://apt.grafana.com/gpg.key
-#   get_url:
-#     url: https://apt.grafana.com/gpg.key
-#     dest: /etc/apt/keyrings/grafana.asc
-# - name: Add grafana repository
-#   apt_repository: 
-#     filename: grafana
-#     repo: "deb [signed-by=/etc/apt/keyrings/grafana.asc] https://apt.grafana.com stable main"
-#     update_cache: yes
-#     state: present
-# - name: Install grafana
-#   apt:
-#     name: grafana
+    path: /etc/apt/keyrings
+    state: 'directory'
+- name: Download https://repos.influxdata.com/influxdata-archive_compat.key
+  get_url:
+    url: https://repos.influxdata.com/influxdata-archive_compat.key
+    dest: /etc/apt/keyrings/telegraf.asc
+- name: Add telegraf repository
+  apt_repository: 
+    filename: telegraf
+    repo: "deb [signed-by=/etc/apt/keyrings/telegraf.asc] https://repos.influxdata.com/debian stable main"
+    update_cache: yes
+    state: present
+- name: Install telegraf
+  apt:
+    name: telegraf=1.28.2-1
+- name: Configurate telegraf
+  copy:
+    src: telegraf.conf
+    dest: /etc/telegraf/telegraf.conf
+  notify:
+    - Systemd daemon_reload telegraf
+    - Restart telegraf
+
+- block:
+  - name: Download InfluxDB exporter
+    get_url:
+      url: https://github.com/carlpett/influxdb_stats_exporter/releases/download/v0.1.1/influx_stats_exporter_linux_amd64
+      dest: /usr/local/bin/
+  - name: chmod InfluxDB exporter
+    file: 
+      path: /usr/local/bin/influx_stats_exporter_linux_amd64
+      mode: "+x"
+      owner: prometheus
+      group: prometheus
+  - name: Copy prometheus-influxdb-stats-exporter.service
+    copy:
+      src: prometheus-influxdb-stats-exporter.service
+      dest: /etc/systemd/system/prometheus-influxdb-stats-exporter.service
+  notify:
+    - Systemd daemon_reload prometheus-influxdb-stats-exporter
+
+- name: Configurate influxdb
+  copy:
+    src: influxdb.conf
+    dest: /etc/influxdb/influxdb.conf
+  notify:
+    - Restart influxdb
+- service:
+    enabled: yes
+    name: "{{ item }}"
+    state: started
+  loop:
+    - influxdb
+    - pinger
+    - telegraf
+    - prometheus-influxdb-stats-exporter

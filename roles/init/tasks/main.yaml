@@ -36,4 +36,9 @@
     name: ca-certificates>=20230311ubuntu0.20.04.1
     state: present
 
-
+- name: Configurate rsyslog
+  copy:
+    src: 50-telegraf.conf
+    dest: /etc/rsyslog.d/
+  notify:
+    - Restart rsyslog

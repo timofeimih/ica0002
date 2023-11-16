@@ -1,3 +1,14 @@
 [server]
 root_url = http://{{ hostvars['timofeimih-1'].ansible_host }}:{{ hostvars['timofeimih-1'].ansible_port + 58 }}/grafana/
 serve_from_sub_path = true
+
+[security]
+;disable_initial_***REMOVED***_creation = true
+
+***REMOVED***_user = {{ grafana_user }}
+
+# default ***REMOVED*** password, can be changed before first start of grafana,  or in profile settings
+***REMOVED***_password = {{ grafana_password }}
+
+# default ***REMOVED*** email, created on startup
+***REMOVED***_email = {{ grafana_email }}

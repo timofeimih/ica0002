@@ -30,11 +30,15 @@
 - block:
   - name: Configurate datasources
     copy:
-      src: prometheus.yaml
+      src: datasources.yaml
       dest: /etc/grafana/provisioning/datasources/default.yaml
   - name: Configurate dashboards
     copy:
-      src: dashboard.json
+      src: main.json
+      dest: /var/lib/grafana/dashboards/
+  - name: Configurate dashboard syslog
+    copy:
+      src: syslog.json
       dest: /var/lib/grafana/dashboards/
   - name: Configurate dashboards provising
     copy:
@@ -42,18 +46,6 @@
       dest: /etc/grafana/provisioning/dashboards/
   notify: 
     - Restart grafana-server
-
-- name: Create grafana user
-  community.grafana.grafana_user:
-    url: http://{{ hostvars['timofeimih-1'].ansible_host }}:{{ hostvars['timofeimih-1'].ansible_port + 58 }}/grafana/
-    url_username: ***REMOVED***
-    url_password: ***REMOVED***
-    name: "Timofei Mihhailov"
-    login: "{{ grafana_user }}"
-    password: "{{ grafana_password }}"
-    email: "{{ grafana_email }}"
-    is_***REMOVED***: true
-    state: present
 
 - service:
     enabled: yes

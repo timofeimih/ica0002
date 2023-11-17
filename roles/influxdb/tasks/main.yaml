@@ -10,30 +10,6 @@
 - name: Install InfluxDB
   apt: deb=/usr/local/bin/influxdb_1.8.10_amd64.deb
 
-- block:
-  - name: Install fping
-    apt:
-      name: fping
-      state: present
-  - name: Add user 'pinger'
-    user:
-      name: pinger
-  - name: Copy pinger.sh
-    copy:
-      src: pinger.sh
-      mode: '+x'
-      dest: /usr/local/bin/pinger
-  - name: Copy pinger.service
-    copy:
-      src: pinger.service
-      dest: /etc/systemd/system/
-  - name: Copy pinger.conf
-    copy:
-      src: pinger.conf
-      dest: /etc/pinger/
-  notify:
-    - Systemd daemon_reload pinger
-
 - name: Create a directory if it does not exists /etc/apt/keyrings
   file:
     path: /etc/apt/keyrings
@@ -75,7 +51,7 @@
       src: prometheus-influxdb-stats-exporter.service
       dest: /etc/systemd/system/prometheus-influxdb-stats-exporter.service
   notify:
-    - Systemd daemon_reload prometheus-influxdb-stats-exporter
+    - Restart prometheus-influxdb-stats-exporter
 
 - name: Configurate influxdb
   copy:

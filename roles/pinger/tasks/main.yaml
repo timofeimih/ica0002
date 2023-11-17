@@ -1,0 +1,30 @@
+- block:
+  - name: Install fping
+    apt:
+      name: fping
+      state: present
+  - name: Add user 'pinger'
+    user:
+      name: pinger
+  - name: Copy pinger.sh
+    copy:
+      src: pinger.sh
+      mode: '+x'
+      dest: /usr/local/bin/pinger
+  - name: Copy pinger.service
+    copy:
+      src: pinger.service
+      dest: /etc/systemd/system/
+  - name: Copy pinger.conf
+    copy:
+      src: pinger.conf
+      dest: /etc/pinger/
+  notify:
+    - Systemd daemon_reload pinger
+
+- service:
+    enabled: yes
+    name: "{{ item }}"
+    state: started
+  loop:
+    - pinger

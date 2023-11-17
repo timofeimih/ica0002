@@ -1,0 +1,7 @@
+---
+- name: Systemd daemon_reload pinger
+  systemd:
+    name: pinger
+    state: restarted
+    daemon_reload: true
+

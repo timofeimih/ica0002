@@ -21,11 +21,6 @@
   notify: 
     - Restart bind9
     - RNDC reload
-- name: Service bind9 is running
-  service:
-    name: bind9
-    state: started
-    enabled: true
 - name: Install prometheus-bind-exporter
   apt:
     name: prometheus-bind-exporter

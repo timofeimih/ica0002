@@ -59,4 +59,7 @@ prometheus_jobs:
     target_group: web_servers
   - name: influxdb
     target_port: 9424
-    target_group: influxdb
+    target_group: influxdb\
+
+backup_server_ip: 192.168.42.132
+***REMOVED***

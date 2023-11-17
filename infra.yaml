@@ -21,6 +21,7 @@
         template:
           src: resolv.conf.j2
           dest: /etc/resolv.conf
+    tags: resolv
   - name: Mysql setup
     hosts: db_servers
     roles: 

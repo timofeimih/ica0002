@@ -53,4 +53,29 @@
   loop:
     - mysql
     - prometheus-mysqld-exporter
-    
+
+- name: Create a directory if it does not exists /home/backup/mysql
+  file:
+    path: /home/backup/mysql
+    state: 'directory'
+    owner: backup
+    group: backup
+
+- name: MySQL user
+  community.mysql.mysql_user:
+    name: "{{ backup_login }}"
+    password: "{{ backup_password }}"
+    host: "%"
+    priv: "{{ mysql_database }}.*:LOCK TABLES, SELECT"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+- name: Copy file .my.cnf to /home/backup
+  template: 
+    src: backup.my.cnf.j2
+    dest: /home/backup/.my.cnf
+    owner: backup
+    group: backup
+    mode: '0600'
+- name: Copy file mysql-backup
+  template: 
+    src: mysql-backup.j2
+    dest: /etc/cron.d/mysql-backup

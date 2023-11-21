@@ -58,3 +58,15 @@
     dest: /home/backup/.ssh/known_hosts
     owner: backup
     group: backup
+
+- name: Create a directory if it does not exists /home/backup/restore
+  file:
+    path: /home/backup/restore
+    state: 'directory'
+    owner: backup
+    group: backup
+
+- name: Install duplicity
+  apt:
+    name: duplicity
+    state: present

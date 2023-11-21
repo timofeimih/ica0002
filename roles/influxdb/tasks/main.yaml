@@ -1,70 +1,81 @@
-- name: Create a directory if it does not exists /home
+# - name: Create a directory if it does not exists /home
+#   file:
+#     path: /usr/local/bin
+#     state: 'directory'
+# - name: Download InfluxDB
+#   get_url:
+#     url: https://dl.influxdata.com/influxdb/releases/influxdb_1.8.10_amd64.deb
+#     dest: /usr/local/bin
+
+# - name: Install InfluxDB
+#   apt: deb=/usr/local/bin/influxdb_1.8.10_amd64.deb
+
+# - name: Create a directory if it does not exists /etc/apt/keyrings
+#   file:
+#     path: /etc/apt/keyrings
+#     state: 'directory'
+# - name: Download https://repos.influxdata.com/influxdata-archive_compat.key
+#   get_url:
+#     url: https://repos.influxdata.com/influxdata-archive_compat.key
+#     dest: /etc/apt/keyrings/telegraf.asc
+# - name: Add telegraf repository
+#   apt_repository: 
+#     filename: telegraf
+#     repo: "deb [signed-by=/etc/apt/keyrings/telegraf.asc] https://repos.influxdata.com/debian stable main"
+#     update_cache: yes
+#     state: present
+# - name: Install telegraf
+#   apt:
+#     name: telegraf=1.28.2-1
+# - name: Configurate telegraf
+#   copy:
+#     src: telegraf.conf
+#     dest: /etc/telegraf/telegraf.conf
+#   notify:
+#     - Systemd daemon_reload telegraf
+#     - Restart telegraf
+
+# - block:
+#   - name: Download InfluxDB exporter
+#     get_url:
+#       url: https://github.com/carlpett/influxdb_stats_exporter/releases/download/v0.1.1/influx_stats_exporter_linux_amd64
+#       dest: /usr/local/bin/
+#   - name: chmod InfluxDB exporter
+#     file: 
+#       path: /usr/local/bin/influx_stats_exporter_linux_amd64
+#       mode: "+x"
+#       owner: prometheus
+#       group: prometheus
+#   - name: Copy prometheus-influxdb-stats-exporter.service
+#     copy:
+#       src: prometheus-influxdb-stats-exporter.service
+#       dest: /etc/systemd/system/prometheus-influxdb-stats-exporter.service
+#   notify:
+#     - Restart prometheus-influxdb-stats-exporter
+
+# - name: Configurate influxdb
+#   copy:
+#     src: influxdb.conf
+#     dest: /etc/influxdb/influxdb.conf
+#   notify:
+#     - Restart influxdb
+# - service:
+#     enabled: yes
+#     name: "{{ item }}"
+#     state: started
+#   loop:
+#     - influxdb
+#     - pinger
+#     - telegraf
+#     - prometheus-influxdb-stats-exporter
+
+- name: Create a directory if it does not exists /home/backup/influxdb
   file:
-    path: /usr/local/bin
+    path: /home/backup/influxdb
     state: 'directory'
-- name: Download InfluxDB
-  get_url:
-    url: https://dl.influxdata.com/influxdb/releases/influxdb_1.8.10_amd64.deb
-    dest: /usr/local/bin
-
-- name: Install InfluxDB
-  apt: deb=/usr/local/bin/influxdb_1.8.10_amd64.deb
-
-- name: Create a directory if it does not exists /etc/apt/keyrings
-  file:
-    path: /etc/apt/keyrings
-    state: 'directory'
-- name: Download https://repos.influxdata.com/influxdata-archive_compat.key
-  get_url:
-    url: https://repos.influxdata.com/influxdata-archive_compat.key
-    dest: /etc/apt/keyrings/telegraf.asc
-- name: Add telegraf repository
-  apt_repository: 
-    filename: telegraf
-    repo: "deb [signed-by=/etc/apt/keyrings/telegraf.asc] https://repos.influxdata.com/debian stable main"
-    update_cache: yes
-    state: present
-- name: Install telegraf
-  apt:
-    name: telegraf=1.28.2-1
-- name: Configurate telegraf
-  copy:
-    src: telegraf.conf
-    dest: /etc/telegraf/telegraf.conf
-  notify:
-    - Systemd daemon_reload telegraf
-    - Restart telegraf
-
-- block:
-  - name: Download InfluxDB exporter
-    get_url:
-      url: https://github.com/carlpett/influxdb_stats_exporter/releases/download/v0.1.1/influx_stats_exporter_linux_amd64
-      dest: /usr/local/bin/
-  - name: chmod InfluxDB exporter
-    file: 
-      path: /usr/local/bin/influx_stats_exporter_linux_amd64
-      mode: "+x"
-      owner: prometheus
-      group: prometheus
-  - name: Copy prometheus-influxdb-stats-exporter.service
-    copy:
-      src: prometheus-influxdb-stats-exporter.service
-      dest: /etc/systemd/system/prometheus-influxdb-stats-exporter.service
-  notify:
-    - Restart prometheus-influxdb-stats-exporter
-
-- name: Configurate influxdb
-  copy:
-    src: influxdb.conf
-    dest: /etc/influxdb/influxdb.conf
-  notify:
-    - Restart influxdb
-- service:
-    enabled: yes
-    name: "{{ item }}"
-    state: started
-  loop:
-    - influxdb
-    - pinger
-    - telegraf
-    - prometheus-influxdb-stats-exporter
+    owner: backup
+    group: backup
+- name: Template file influxdb-backup
+  template: 
+    src: influxdb-backup.j2
+    dest: /etc/cron.d/influxdb-backup

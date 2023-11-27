@@ -1,13 +1,21 @@
-
-- name: Copy file .my.cnf and restart MySQL
+- name: Copy file .my.cnf
   template: 
     src: .my.cnf.j2
     dest: /var/lib/prometheus/.my.cnf
     owner: prometheus
     group: prometheus
     mode: '0600'
-  notify:
-    Restart prometheus-mysqld-exporter
+- name: Copy file prometheus-mysqld-exporter
+  copy: 
+    src: prometheus-mysqld-exporter
+    dest: /etc/default/prometheus-mysqld-exporter
+- name: Copy file .my.cnf to /home/backup
+  template: 
+    src: backup.my.cnf.j2
+    dest: /home/backup/.my.cnf
+    owner: backup
+    group: backup
+    mode: '0600'
 - name: Install MySQL-server
   apt:
     name: mysql-server
@@ -21,18 +29,22 @@
     name: "{{ mysql_database }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
 - name: Copy file override.cnf and restart MySQL
-  copy:
-    src: override.cnf
+  template:
+    src: override.cnf.j2
     dest: /etc/mysql/mysql.conf.d/override.cnf
   notify:
     Restart mysql
-- name: MySQL user
+- name: Create MySQL {{ mysql_user }} user
   community.mysql.mysql_user:
     name: "{{ mysql_user }}"
     password: "{{ mysql_password }}"
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
     login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica
+
 - name: Create MySQL user dedicated for exporter
   community.mysql.mysql_user:
     name: "{{ mysql_exporter_login }}"
@@ -61,21 +73,33 @@
     owner: backup
     group: backup
 
-- name: MySQL user
+- name: Create MySQL {{ backup_login }} user
   community.mysql.mysql_user:
     name: "{{ backup_login }}"
     password: "{{ backup_password }}"
     host: "%"
     priv: "{{ mysql_database }}.*:LOCK TABLES, SELECT"
     login_unix_socket: /var/run/mysqld/mysqld.sock
-- name: Copy file .my.cnf to /home/backup
-  template: 
-    src: backup.my.cnf.j2
-    dest: /home/backup/.my.cnf
-    owner: backup
-    group: backup
-    mode: '0600'
+
 - name: Copy file mysql-backup
   template: 
     src: mysql-backup.j2
     dest: /etc/cron.d/mysql-backup
+
+- name: Create MySQL replication user
+  community.mysql.mysql_user:
+    name: "{{ mysql_replication_login }}"
+    password: "{{ mysql_replication_password }}"
+    host: "%"
+    priv: "*.*:REPLICATION SLAVE"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Read-only settings for replica server
+  community.mysql.mysql_variables:
+    variable: read_only
+    value: "{{ 'OFF' if inventory_hostname == mysql_host else 'ON' }}"
+    mode: persist
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+  notify:
+    - Reset MySQL source
+    - Reset MySQL replica

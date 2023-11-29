@@ -1,18 +1,24 @@
-- name: Install python3-flask-sqlalchemy
-  apt:
-    name: 
-      - python3-flask-sqlalchemy
-      - python3-pymysql
-    state: present
-- name: Add user 'agama'
-  user:
-    name: agama
 - name: Create a directory if it does not exists /opt/agama
   file:
     path: /opt/agama
     state: 'directory'
-    owner: agama
-- name: Download agama.py
+- name: Download agama.py and Dockerfile
   get_url:
-    url: https://raw.githubusercontent.com/hudolejev/agama/master/agama.py
+    url: "{{ item }}"
     dest: /opt/agama
+  loop:
+    - https://raw.githubusercontent.com/hudolejev/agama/master/agama.py
+    - https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile
+- name: Build Docker image
+  community.docker.docker_image:
+    name: agama
+    source: build
+    build:
+      path: /opt/agama
+- name: Agama Docker container start
+  community.docker.docker_container:
+    name: agama
+    image: agama
+    published_ports: "{{ agama_port }}:8000"
+    env:
+      AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user }}:{{ mysql_password }}@{{ mysql_host }}/{{ mysql_database }}

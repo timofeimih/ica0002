@@ -1,60 +1,64 @@
-- name: Install apt-transport-https and software-properties-common
-  apt:
-    name: 
-      - apt-transport-https
-      - software-properties-common
-    state: present
-- name: Create a directory if it does not exists /etc/apt/keyrings
+---
+- name: Grafana directory
   file:
-    path: /etc/apt/keyrings
+    path: /opt/grafana
     state: 'directory'
-- name: Download https://apt.grafana.com/gpg.key
-  get_url:
-    url: https://apt.grafana.com/gpg.key
-    dest: /etc/apt/keyrings/grafana.asc
-- name: Add grafana repository
-  apt_repository: 
-    filename: grafana
-    repo: "deb [signed-by=/etc/apt/keyrings/grafana.asc] https://apt.grafana.com stable main"
-    update_cache: yes
-    state: present
-- name: Install grafana
-  apt:
-    name: grafana
 - name: Configurate grafana
   template:
     src: grafana.ini.j2
-    dest: /etc/grafana/grafana.ini
+    dest: /opt/grafana/grafana.ini
+  no_log: true
   notify: 
-    - Restart grafana-server
-- block:
-  - name: Configurate datasources
-    copy:
-      src: datasources.yaml
-      dest: /etc/grafana/provisioning/datasources/default.yaml
-  - name: Configurate dashboards
-    copy:
-      src: main.json
-      dest: /var/lib/grafana/dashboards/
-  - name: Configurate dashboard syslog
-    copy:
-      src: syslog.json
-      dest: /var/lib/grafana/dashboards/
-  - name: Configurate dashboard mysql
-    copy:
-      src: mysql.json
-      dest: /var/lib/grafana/dashboards/
-  - name: Configurate dashboards provising
-    copy:
-      src: default.yaml
-      dest: /etc/grafana/provisioning/dashboards/
-  notify: 
-    - Restart grafana-server
-
-- service:
-    enabled: yes
-    name: "{{ item }}"
-    state: started
+    - Restart grafana
+- name: Configurate provisioning
+  file:
+    path: "/opt/grafana/provisioning/{{ item }}"
+    state: directory
   loop:
-    - grafana-server
-    
+    - datasources
+    - dashboards
+
+- name: Configurate provisioning
+  copy:
+    src: "{{item }}"
+    dest: "/opt/grafana/provisioning/{{ item }}"
+  loop:
+    - datasources/default.yaml
+    - dashboards/main.json
+    - dashboards/syslog.json
+    - dashboards/mysql.json
+    - dashboards/default.yaml
+  notify:
+    Restart grafana
+
+# - block:
+#   - name: Configurate datasources
+#     copy:
+#       src: datasources.yaml
+#       dest: /opt/grafana/provisioning/datasources/default.yaml
+#   - name: Configurate dashboards
+#     copy:
+#       src: main.json
+#       dest: /opt/grafana/dashboards/
+#   - name: Configurate dashboard syslog
+#     copy:
+#       src: syslog.json
+#       dest: /opt/grafana/dashboards/
+#   - name: Configurate dashboard mysql
+#     copy:
+#       src: mysql.json
+#       dest: /opt/grafana/dashboards/
+#   - name: Configurate dashboards provising
+#     copy:
+#       src: default.yaml
+#       dest: /opt/grafana/provisioning/dashboards/
+  # notify: 
+  #   - Restart grafana-server
+
+- name: Grafana Docker container
+  community.docker.docker_container:
+    name: grafana
+    image: grafana/grafana
+    published_ports: "{{ grafana_port }}:3000"
+    volumes: 
+      - /opt/grafana:/etc/grafana

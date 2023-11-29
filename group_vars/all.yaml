@@ -44,6 +44,7 @@ dns_forwarders:
 dns_access_rules:
   - 192.168.42.0/23
   - 127.0.0.0/8
+  - 172.17.0.0/16
 
 prometheus_jobs:
   - name: linux
@@ -92,3 +93,6 @@ mysql_replication_password: !vault |
           3930663734643730320a323134346232326137346435373962346264303833663337303034613465
           35653538313431326535643531626537393336366139316132343432333034633165
 node_id: "{{ (ansible_port / 100) | int }}"
+
+grafana_port: 3001
+agama_port: 8001

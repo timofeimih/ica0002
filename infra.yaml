@@ -8,7 +8,7 @@
     hosts: dns_servers
     roles:
       - bind
-    tags: d
+    tags: dns
   - name: resolv.conf configuration
     hosts: all
     tasks:
@@ -31,7 +31,7 @@
     hosts: web_servers
     roles:
       - agama
-      - uwsgi
+      # - uwsgi
       - nginx
     tags: n
   - name: Prometheus setup
@@ -39,11 +39,11 @@
     roles:
       - prometheus
     tags: p
-  - name: Grafana setup
-    hosts: grafana
-    roles:
-      - grafana
-    tags: g
+  # - name: Grafana setup
+  #   hosts: grafana
+  #   roles:
+  #     - grafana
+  #   tags: g
   - name: Pinger setup
     hosts: influxdb
     roles:
@@ -54,3 +54,10 @@
     roles:
       - influxdb
     tags: i
+  - name: Docker setup
+    hosts: docker
+    roles:
+      - docker
+      - grafana
+    tags: d
+

@@ -1,0 +1,18 @@
+- name: Install python3-flask-sqlalchemy
+  apt:
+    name: 
+      - python3-flask-sqlalchemy
+      - python3-pymysql
+    state: present
+- name: Add user 'agama'
+  user:
+    name: agama
+- name: Create a directory if it does not exists /opt/agama
+  file:
+    path: /opt/agama
+    state: 'directory'
+    owner: agama
+- name: Download agama.py
+  get_url:
+    url: https://raw.githubusercontent.com/hudolejev/agama/master/agama.py
+    dest: /opt/agama

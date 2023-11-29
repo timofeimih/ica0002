@@ -1,4 +1,4 @@
-- name: Restart grafana-server
-  service:
-    name: grafana-server
-    state: restarted
+- name: Restart grafana
+  community.docker.docker_container:
+    name: grafana
+    restart: true

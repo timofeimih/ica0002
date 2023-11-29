@@ -7,13 +7,15 @@
     src: named.conf.options.j2
     dest: /etc/bind/named.conf.options
   notify: 
-    Restart bind9
+    - Restart bind9
+    - RNDC reload
 - name: Copy file named.conf.local and restart bind9
   template:
     src: named.conf.local.j2
     dest: /etc/bind/named.conf.local
   notify: 
-    Restart bind9
+    - Restart bind9
+    - RNDC reload
 - name: Copy file db.{{ startup_name }}, restart bind9 and RNDC reload
   template:
     src: db.{{ startup_name }}.j2

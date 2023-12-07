@@ -1,0 +1,20 @@
+---
+- apt:
+    name: haproxy
+- template:
+    dest: /etc/haproxy/haproxy.cfg
+    src: haproxy.cfg.j2
+  notify: Restart haproxy
+- apt:
+    name: prometheus-haproxy-exporter
+- template:
+    dest: /etc/default/prometheus-haproxy-exporter
+    src: prometheus-haproxy-exporter.j2
+  notify: Restart prometheus-haproxy-exporter
+- service:
+    name: "{{item }}"
+    state: started
+    enabled: yes
+  loop:
+    - haproxy
+    - prometheus-haproxy-exporter

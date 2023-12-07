@@ -1,0 +1,44 @@
+---
+- apt:
+    name: keepalived
+- name: Add user 'keepalived_script '
+  user:
+    name: keepalived_script 
+- template:
+    dest: /etc/keepalived/keepalived.conf
+    src: keepalived.conf.j2
+  notify: Restart keepalived
+- template:
+    dest: /home/keepalived_script/check_haproxy.sh
+    src: check_haproxy.sh.j2
+    owner: keepalived_script
+
+- name: chmod check_haproxy.sh
+  file: 
+    path: /home/keepalived_script/check_haproxy.sh
+    mode: "+x"
+  notify: Restart keepalived
+- block:
+  - name: Extract keepalived-exporter-1.2.0.linux-amd64.tar.gz
+    ansible.builtin.unarchive:
+      src: http://timofeimih@backup.timofeimih.pro/keepalived-exporter-1.2.0.linux-amd64.tar.gz
+      dest: /usr/local/bin/
+      remote_src: yes
+  - name: chmod keepalived-exporter exporter
+    file: 
+      path: /usr/local/bin/keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter
+      mode: "+x"
+  - name: Copy keepalived-exporter.service
+    copy:
+      src: keepalived-exporter.service
+      dest: /etc/systemd/system/
+  notify:
+    - Restart keepalived-exporter
+
+- service:
+    name: "{{item }}"
+    state: started
+    enabled: yes
+  loop:
+    - keepalived
+    - keepalived-exporter

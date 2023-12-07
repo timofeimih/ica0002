@@ -4,11 +4,6 @@
     name: telegraf
     state: restarted
     daemon_reload: true
-- name: Restart daemon_reload prometheus-influxdb-stats-exporter
-  systemd:
-    name: prometheus-influxdb-stats-exporter
-    state: restarted
-    daemon_reload: true
 - name: Restart prometheus-influxdb-stats-exporter
   service:
     name: prometheus-influxdb-stats-exporter

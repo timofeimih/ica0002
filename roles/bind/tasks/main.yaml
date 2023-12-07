@@ -5,21 +5,26 @@
 - name: Copy file named.conf.options and restart bind9
   template:
     src: named.conf.options.j2
-    dest: /etc/bind/named.conf.options
+    dest: /var/cache/bind/named.conf.options
   notify: 
     - Restart bind9
     - RNDC reload
 - name: Copy file named.conf.local and restart bind9
   template:
     src: named.conf.local.j2
-    dest: /etc/bind/named.conf.local
+    dest: /var/cache/bind/named.conf.local
   notify: 
     - Restart bind9
     - RNDC reload
+
+# - name: Display all variables/facts known for a host
+#   debug:
+#     msg: "{{ hostvars['timofeimih-1'] }}"
+
 - name: Copy file db.{{ startup_name }}, restart bind9 and RNDC reload
   template:
     src: db.{{ startup_name }}.j2
-    dest: /etc/bind/db.{{ startup_name }}
+    dest: /var/cache/bind/db.{{ startup_name }}
   notify: 
     - Restart bind9
     - RNDC reload
@@ -35,9 +40,3 @@
   loop:
     - bind9
     - prometheus-bind-exporter
-    
-# - name: run setup
-#   setup:
-# - name: Display all variables/facts known for a host
-#   debug:
-#     msg: "{{ hostvars['timofeimih-1'] }}"

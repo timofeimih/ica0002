@@ -1,7 +1,3 @@
-- name: Create a directory if it does not exists /home
-  file:
-    path: /usr/local/bin
-    state: 'directory'
 - name: Download InfluxDB
   get_url:
     url: https://dl.influxdata.com/influxdb/releases/influxdb_1.8.10_amd64.deb

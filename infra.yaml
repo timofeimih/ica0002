@@ -30,7 +30,6 @@
   - name: Web server setup
     hosts: web_servers
     roles:
-      - agama
       # - uwsgi
       - nginx
     tags: n
@@ -39,13 +38,8 @@
     roles:
       - prometheus
     tags: p
-  # - name: Grafana setup
-  #   hosts: grafana
-  #   roles:
-  #     - grafana
-  #   tags: g
   - name: Pinger setup
-    hosts: influxdb
+    hosts: pinger
     roles:
       - pinger
     tags: pinger
@@ -58,6 +52,24 @@
     hosts: docker
     roles:
       - docker
-      - grafana
     tags: d
-
+  - name: Agama setup
+    hosts: agama
+    roles:
+      - agama
+    tags: a
+  - name: Grafana setup
+    hosts: monitoring
+    roles:
+      - grafana
+    tags: g
+  - name: HaProxy setup
+    hosts: haproxy
+    roles:
+      - haproxy
+    tags: h
+  - name: Keepalived setup
+    hosts: keepalived
+    roles:
+      - keepalived
+    tags: k

@@ -62,3 +62,7 @@
     published_ports: "{{ grafana_port }}:3000"
     volumes: 
       - /opt/grafana:/etc/grafana
+# - include_role:
+#     name: dns_record
+#   vars:
+#     dns_record: grafana

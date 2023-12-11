@@ -8,31 +8,13 @@
     hosts: dns_servers
     roles:
       - bind
+      - dns_setup
     tags: dns
-  - name: resolv.conf configuration
-    hosts: all
-    tasks:
-      - name: systemd-resolved service is stopped
-        service:
-          name: systemd-resolved
-          state: stopped
-          enabled: true
-      - name: Copy file resolv.conf.j2
-        template:
-          src: resolv.conf.j2
-          dest: /etc/resolv.conf
-    tags: resolv
   - name: Mysql setup
     hosts: db_servers
     roles: 
       - mysql
     tags: m
-  - name: Web server setup
-    hosts: web_servers
-    roles:
-      # - uwsgi
-      - nginx
-    tags: n
   - name: Prometheus setup
     hosts: monitoring
     roles:
@@ -63,6 +45,12 @@
     roles:
       - grafana
     tags: g
+  - name: Web server setup
+    hosts: web_servers
+    roles:
+      # - uwsgi
+      - nginx
+    tags: n
   - name: HaProxy setup
     hosts: haproxy
     roles:

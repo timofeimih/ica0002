@@ -1,3 +1,10 @@
+
+- name: Install nginx
+  ansible.builtin.apt:
+    name: 
+      - nginx
+      - prometheus-nginx-exporter
+    state: present
 - name: Create a directory if it does not exists /etc/nginx/sites-enabled
   file:
     path: /etc/nginx/sites-enabled
@@ -6,12 +13,8 @@
   template:
     src: default.j2
     dest: /etc/nginx/sites-enabled/default
-- name: Install nginx
-  ansible.builtin.apt:
-    name: 
-      - nginx
-      - prometheus-nginx-exporter
-    state: present
+  notify: 
+    Restart nginx
 - service:
     enabled: yes
     name: "{{ item }}"

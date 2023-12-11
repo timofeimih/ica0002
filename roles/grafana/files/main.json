@@ -94,11 +94,11 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "bind_up{instance=\"timofeimih-2:9119\"}",
+          "expr": "bind_up",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "Bind9",
+          "legendFormat": "bind9 {{ instance }}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -115,7 +115,7 @@
           "hide": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "MySQL",
+          "legendFormat": "mysql {{ instance }}",
           "range": true,
           "refId": "B",
           "useBackend": false
@@ -127,31 +127,14 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "nginx_up{instance=\"timofeimih-1:9113\"}",
+          "expr": "nginx_up",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "Nginx timofeimih-1",
+          "legendFormat": "nginx {{ instance }}",
           "range": true,
           "refId": "C",
-          "useBackend": false
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "Prometheus-1"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "nginx_up{instance=\"timofeimih-2:9113\"}",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "Nginx timofeimih-2",
-          "range": true,
-          "refId": "D",
           "useBackend": false
         }
       ],
@@ -407,7 +390,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "docker1",
+          "legendFormat": "docker1 {{ instance }}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -424,7 +407,7 @@
           "hide": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "docker2",
+          "legendFormat": "docker2 {{ instance }}",
           "range": true,
           "refId": "B",
           "useBackend": false
@@ -494,7 +477,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{ instance }}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -783,7 +766,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": false,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{ instance }}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -882,7 +865,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{ instance }}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -981,7 +964,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{ instance }}",
           "range": true,
           "refId": "A",
           "useBackend": false

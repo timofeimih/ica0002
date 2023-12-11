@@ -18,16 +18,21 @@
     - datasources
     - dashboards
 
-- name: Configurate provisioning
+- name: Configurate provisioning dashboards
   copy:
     src: "{{item }}"
-    dest: "/opt/grafana/provisioning/{{ item }}"
+    dest: "/opt/grafana/provisioning/dashboards/{{ item }}"
   loop:
-    - datasources/default.yaml
-    - dashboards/main.json
-    - dashboards/syslog.json
-    - dashboards/mysql.json
-    - dashboards/default.yaml
+    - main.json
+    - syslog.json
+    - mysql.json
+    - default.yaml
+  notify:
+    Restart grafana
+- name: Configurate provisioning datasources
+  copy:
+    src: "datasources/default.yaml"
+    dest: "/opt/grafana/provisioning/datasources/default.yaml"
   notify:
     Restart grafana
 
@@ -62,7 +67,7 @@
     published_ports: "{{ grafana_port }}:3000"
     volumes: 
       - /opt/grafana:/etc/grafana
-# - include_role:
-#     name: dns_record
-#   vars:
-#     dns_record: grafana
+- include_role:
+    name: dns_record
+  vars:
+    dns_record: grafana

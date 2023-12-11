@@ -14,3 +14,9 @@
     dest: /etc/default/prometheus
   notify:
     Restart prometheus
+
+- include_role:
+    name: dns_record
+  vars:
+    dns_record: prometheus
+    server: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"

@@ -6,13 +6,13 @@ datasources:
     orgId: 1
     access: proxy
     uid: Prometheus-1
-    url: http://timofeimih-2:9090/prometheus/
+    url: http://prometheus:9090/prometheus/
     editable: true
   - name: Pinger
     type: influxdb
     access: proxy
     uid: Pinger
-    url: http://timofeimih-1:8086
+    url: http://influxdb:8086
     editable: true
     jsonData:
       dbName: pinger
@@ -20,7 +20,7 @@ datasources:
     type: influxdb
     access: proxy
     uid: Telegraf
-    url: http://timofeimih-1:8086
+    url: http://influxdb:8086
     editable: true
     jsonData:
       dbName: telegraf

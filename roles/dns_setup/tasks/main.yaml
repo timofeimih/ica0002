@@ -1,0 +1,46 @@
+- name: systemd-resolved service is stopped
+  service:
+    name: systemd-resolved
+    state: stopped
+    enabled: true
+- name: Copy file resolv.conf.j2
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+- name: Install python3-dnspython
+  apt:
+    name: 
+      - python3-dnspython
+    state: present
+- name: Add or modify backup A to 192.168.1.1"
+  community.general.nsupdate:
+    key_name: "nsupdate.key"
+    key_algorithm: "hmac-sha256"
+    key_secret: "{{ dns_update_key }}"
+    server: "{{ groups['dns_primary'][0] }}"
+    zone: "{{ startup_name }}"
+    record: "backup"
+    value: "{{ backup_server_ip }}"
+  when: inventory_hostname == groups['dns_primary'][0]
+- name: "Add or modify ns-1 CNAME {{ groups['dns_secondary'][0] }}"
+  community.general.nsupdate:
+    key_name: "nsupdate.key"
+    key_algorithm: "hmac-sha256"
+    key_secret: "{{ dns_update_key }}"
+    server: "{{ groups['dns_primary'][0] }}"
+    zone: "{{ startup_name }}"
+    type: "CNAME"
+    record: "ns-1"
+    value: "{{ groups['dns_secondary'][0]  }}"
+  when: inventory_hostname == groups['dns_primary'][0]
+- name: "Add or modify ns-1 CNAME {{ groups['dns_secondary'][0] }}"
+  community.general.nsupdate:
+    key_name: "nsupdate.key"
+    key_algorithm: "hmac-sha256"
+    key_secret: "{{ dns_update_key }}"
+    server: "{{ groups['dns_primary'][0] }}"
+    zone: "{{ startup_name }}"
+    type: "CNAME"
+    record: "ns-2"
+    value: "{{ inventory_hostname  }}"
+  when: inventory_hostname == groups['dns_primary'][0]

@@ -22,3 +22,7 @@
     published_ports: "{{ agama_port }}:8000"
     env:
       AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user }}:{{ mysql_password }}@{{ mysql_host }}/{{ mysql_database }}
+- include_role:
+    name: dns_record
+  vars:
+    dns_record: "www{{ inventory_hostname.replace(machine_name, '') }}"

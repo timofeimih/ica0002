@@ -23,16 +23,12 @@
       template:
         src: db.{{ startup_name }}.j2
         dest: /var/cache/bind/db.{{ startup_name }}
-        owner: bind
-        group: bind
-      when: not db_uploaded.stat.exists
+      when: db_uploaded is not defined
     - name: Copy file db.rev, restart bind9 and RNDC reload
       template:
         src: db.rev.j2
         dest: /var/cache/bind/db.rev
-        owner: bind
-        group: bind
-      when: not db_rev_uploaded.stat.exists
+      when: db_rev_uploaded is not defined
   notify: 
     - Restart bind9
     - RNDC reload
@@ -43,11 +39,10 @@
     msg: "{{ db_uploaded is not defined }}"
 
 
-- name: Install prometheus-bind-exporter
-  apt:
-    name: 
-      - prometheus-bind-exporter
-    state: present
+# - name: Install prometheus-bind-exporter
+#   apt:
+#     name: prometheus-bind-exporter
+#     state: present
 
 - service:
     enabled: yes
@@ -56,4 +51,15 @@
   loop:
     - bind9
     - prometheus-bind-exporter
+
+- name: Add or modify ansible.example.org A to 192.168.1.1"
+  community.general.nsupdate:
+    key_name: "nsupdate.key"
+    key_algorithm: "hmac-sha256"
+    key_secret: "{{ dns_update_key }}"
+    server: "{{ groups['dns_primary'][0] }}"
+    zone: "{{ startup_name }}"
+    record: "backup"
+    value: "{{ backup_server_ip }}"
+  when: inventory_hostname == groups['dns_primary'][0]
 

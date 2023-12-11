@@ -1,0 +1,10 @@
+- name: "Add or modify {{ dns_record }}.{{ startup_name }} CNAME to {{ inventory_hostname }}"
+  community.general.nsupdate:
+    key_name: "nsupdate.key"
+    key_algorithm: "hmac-sha256"
+    key_secret: "{{ dns_update_key }}"
+    server: "{{ groups['dns_primary'][0] }}"
+    zone: "{{ startup_name }}"
+    type: "CNAME"
+    record: "{{ dns_record }}"
+    value: "{{ inventory_hostname }}"

@@ -103,3 +103,7 @@
   notify:
     - Reset MySQL source
     - Reset MySQL replica
+- include_role:
+    name: dns_record
+  vars:
+    dns_record: "mysql{{ inventory_hostname.replace(machine_name, '') }}"

@@ -3,12 +3,12 @@ root_url = http://{{ hostvars[inventory_hostname].ansible_host }}:{{ hostvars[in
 serve_from_sub_path = true
 
 [security]
-;disable_initial_***REMOVED***_creation = true
+;disable_initial_admin_creation = true
 
-***REMOVED***_user = {{ grafana_user }}
+admin_user = {{ grafana_user }}
 
-# default ***REMOVED*** password, can be changed before first start of grafana,  or in profile settings
-***REMOVED***_password = {{ grafana_password }}
+# default admin password, can be changed before first start of grafana,  or in profile settings
+admin_password = {{ grafana_password }}
 
-# default ***REMOVED*** email, created on startup
-***REMOVED***_email = {{ grafana_email }}
+# default admin email, created on startup
+admin_email = {{ grafana_email }}

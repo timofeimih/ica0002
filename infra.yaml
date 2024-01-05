@@ -8,6 +8,10 @@
     hosts: dns_servers
     roles:
       - bind
+    tags: bind
+  - name: DNS records setup
+    hosts: dns_primary
+    roles:
       - dns_setup
     tags: dns
   - name: Mysql setup

@@ -2,11 +2,9 @@
   apt:
     name: bind9
     state: present
+
+
 - block:
-    - name: Create a directory if it does not exists /var/cache/bind
-      file:
-        path: /var/cache/bind
-        state: 'directory'
     - name: Copy file named.conf.options
       template:
         src: named.conf.options.j2
@@ -16,9 +14,17 @@
       template:
         src: named.conf.local.j2
         dest: /etc/bind/named.conf.local
+  notify: 
+    - Restart bind9
+
+- block:
+    - name: Create a directory if it does not exists /var/cache/bind
+      file:
+        path: /var/cache/bind
+        state: 'directory'
     - stat: path=/var/cache/bind/db.{{ startup_name }}
       register: db_uploaded
-    - stat: path=/var/cache/bind/db.{{ startup_name }}
+    - stat: path=/var/cache/bind/db.rev
       register: db_rev_uploaded  
     - name: Copy file db.{{ startup_name }}
       template:
@@ -33,21 +39,30 @@
         dest: /var/cache/bind/db.rev
         owner: bind
         group: bind
-      # when: not db_rev_uploaded.stat.exists
+      when: not db_rev_uploaded.stat.exists
   notify: 
-    - Restart bind9
     - RNDC reload
-
-
-- name: Display all variables/facts known for a host
-  debug:
-    msg: "{{ db_uploaded is not defined }}"
-
 
 - name: Install prometheus-bind-exporter
   apt:
     name: 
       - prometheus-bind-exporter
+    state: present
+
+- name: systemd-resolved service is stopped
+  service:
+    name: systemd-resolved
+    state: stopped
+    enabled: true
+- name: Copy file resolv.conf.j2
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+
+- name: Install python3-dnspython
+  apt:
+    name: 
+      - python3-dnspython
     state: present
 
 - service:

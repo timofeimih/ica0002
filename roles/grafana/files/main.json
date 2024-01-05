@@ -85,7 +85,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -190,7 +190,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -377,7 +377,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -386,11 +386,11 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "haproxy_server_up{server=\"docker1\"}",
+          "expr": "haproxy_server_up",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
-          "legendFormat": "docker1 {{ instance }}",
+          "legendFormat": "{{ instance }}",
           "range": true,
           "refId": "A",
           "useBackend": false
@@ -462,9 +462,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -535,7 +536,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -637,7 +638,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -761,8 +762,8 @@
             "uid": "Prometheus-1"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "rate(node_cpu_seconds_total{mode=\"idle\"}[1m]) * -1",
+          "editorMode": "code",
+          "expr": "100 - (avg by (instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[1m])) * 100)",
           "fullMetaSearch": false,
           "includeNullMetadata": false,
           "instant": false,
@@ -975,19 +976,19 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 38,
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Main dashboard",
   "uid": "f1fb153f-5739-4006-b138-667530b91902",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }

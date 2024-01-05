@@ -35,31 +35,7 @@
     dest: "/opt/grafana/provisioning/datasources/default.yaml"
   notify:
     Restart grafana
-
-# - block:
-#   - name: Configurate datasources
-#     copy:
-#       src: datasources.yaml
-#       dest: /opt/grafana/provisioning/datasources/default.yaml
-#   - name: Configurate dashboards
-#     copy:
-#       src: main.json
-#       dest: /opt/grafana/dashboards/
-#   - name: Configurate dashboard syslog
-#     copy:
-#       src: syslog.json
-#       dest: /opt/grafana/dashboards/
-#   - name: Configurate dashboard mysql
-#     copy:
-#       src: mysql.json
-#       dest: /opt/grafana/dashboards/
-#   - name: Configurate dashboards provising
-#     copy:
-#       src: default.yaml
-#       dest: /opt/grafana/provisioning/dashboards/
-  # notify: 
-  #   - Restart grafana-server
-
+    
 - name: Grafana Docker container
   community.docker.docker_container:
     name: grafana

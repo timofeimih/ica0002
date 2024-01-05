@@ -3,7 +3,7 @@ server {
 	server_name agama;
 
 	location / {
-		proxy_pass http://www-1:{{ agama_port }};
+		proxy_pass http://www-1:88;
 	}
 
 	location /prometheus {

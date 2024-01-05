@@ -1,3 +1,7 @@
+- include_role:
+    name: dns_record
+  vars:
+    dns_record: "mysql{{ inventory_hostname.replace(machine_name, '') }}"
 - name: Copy file .my.cnf
   template: 
     src: .my.cnf.j2
@@ -97,13 +101,9 @@
 - name: Read-only settings for replica server
   community.mysql.mysql_variables:
     variable: read_only
-    value: "{{ 'OFF' if inventory_hostname == mysql_host else 'ON' }}"
+    value: "{{ 'OFF' if inventory_hostname.replace(machine_name + '-', '') == '1' else 'ON' }}"
     mode: persist
     login_unix_socket: /var/run/mysqld/mysqld.sock
   notify:
     - Reset MySQL source
     - Reset MySQL replica
-- include_role:
-    name: dns_record
-  vars:
-    dns_record: "mysql{{ inventory_hostname.replace(machine_name, '') }}"

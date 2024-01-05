@@ -18,10 +18,6 @@
   loop:
     - haproxy
     - prometheus-haproxy-exporter
-# - include_role:
-#     name: dns_record
-#   vars:
-#     dns_record: "haproxy{{ inventory_hostname: replace('timofeimih', '') }}"
 
 - include_role:
     name: dns_record

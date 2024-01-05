@@ -29,7 +29,10 @@ listen my_ha_frontend
 	bind :88
 	stats enable
 	stats uri /stats
-    stats refresh 5s
-	server docker1 timofeimih-1:8001 check
-	server docker2 timofeimih-2:8001 check
+	stats refresh 5s
+    {% for vm in groups['agama'] %}
+    	{% for agama in containers %}
+	server {{ agama.name }}-{{ vm }} {{ vm }}:{{ agama.port }} check
+    	{% endfor %}
 	
+	{% endfor %}

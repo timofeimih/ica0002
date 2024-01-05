@@ -4,20 +4,22 @@
 - name: Add user 'keepalived_script '
   user:
     name: keepalived_script 
-- template:
-    dest: /etc/keepalived/keepalived.conf
-    src: keepalived.conf.j2
+- block:
+  - template:
+      dest: /etc/keepalived/keepalived.conf
+      src: keepalived.conf.j2
+    notify: Restart keepalived
+    no_log: True
+  - template:
+      dest: /home/keepalived_script/check_haproxy.sh
+      src: check_haproxy.sh.j2
+      owner: keepalived_script
+  - name: chmod check_haproxy.sh
+    file: 
+      path: /home/keepalived_script/check_haproxy.sh
+      mode: "+x"
   notify: Restart keepalived
-- template:
-    dest: /home/keepalived_script/check_haproxy.sh
-    src: check_haproxy.sh.j2
-    owner: keepalived_script
 
-- name: chmod check_haproxy.sh
-  file: 
-    path: /home/keepalived_script/check_haproxy.sh
-    mode: "+x"
-  notify: Restart keepalived
 - block:
   - name: Extract keepalived-exporter-1.2.0.linux-amd64.tar.gz
     ansible.builtin.unarchive:

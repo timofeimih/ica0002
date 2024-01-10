@@ -23,7 +23,7 @@
     - Systemd daemon_reload pinger
 
 - service:
-    enabled: yes
+    enabled: true
     name: "{{ item }}"
     state: started
   loop:

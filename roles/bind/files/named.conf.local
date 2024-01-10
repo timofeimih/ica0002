@@ -1,2 +1,0 @@
-include "/var/cache/bind/named.conf.options";
-include "/var/cache/bind/named.conf.local";

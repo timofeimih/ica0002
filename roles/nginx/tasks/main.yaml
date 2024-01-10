@@ -1,25 +1,36 @@
 
 - name: Install nginx
-  ansible.builtin.apt:
+  apt:
     name: 
       - nginx
+    state: present
+- block:
+  - name: Create a directory if it does not exists /etc/nginx/sites-enabled
+    file:
+      path: /etc/nginx/sites-enabled
+      state: 'directory'
+  - name: Copy file default and restart nginx
+    template:
+      src: default.j2
+      dest: /etc/nginx/sites-enabled/default
+    no_log: True
+  notify: 
+    - Restart nginx
+
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Install prometheus-nginx-exporter
+  apt:
+    name: 
       - prometheus-nginx-exporter
     state: present
-- name: Create a directory if it does not exists /etc/nginx/sites-enabled
-  file:
-    path: /etc/nginx/sites-enabled
-    state: 'directory'
-- name: Copy file default and restart nginx
-  template:
-    src: default.j2
-    dest: /etc/nginx/sites-enabled/default
-  notify: 
-    Restart nginx
+
 - service:
-    enabled: yes
+    enabled: true
     name: "{{ item }}"
     state: started
   loop:
     - nginx
     - prometheus-nginx-exporter
-    
+

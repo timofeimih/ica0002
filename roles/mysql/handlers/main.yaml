@@ -30,13 +30,3 @@
     - resetreplica
     - startreplica
   when: inventory_hostname != mysql_host
-
-
-
-  # stop replica;
-  # change replication soruce to source_host='hudolejev-2', sourse_user='replication', sourse_password='mypass';
-  # reset replica;
-  # start replica;
-  # show replica status\G
-  # Last_IO_Errno Last_SQL_error
-  # mysql -h hudolejev-2 -u replication -p

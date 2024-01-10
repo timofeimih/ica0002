@@ -52,7 +52,7 @@
     - Restart grafana-server
 
 - service:
-    enabled: yes
+    enabled: true
     name: "{{ item }}"
     state: started
   loop:

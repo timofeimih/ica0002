@@ -1,8 +1,7 @@
 startup_name: timofeimih.pro
 machine_name: timofeimih
 
-# mysql_host: "{{ groups['db_servers'] | first }}"
-mysql_host: mysql-1
+mysql_host: "{{ groups['db_servers'] | first }}"
 mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"
 mysql_database: agama
 mysql_user: agama
@@ -66,17 +65,7 @@ prometheus_jobs:
     target_group: keepalived
 
 backup_server_ip: 192.168.42.132
-backup_server_ssh_key: !vault |
-          $ANSIBLE_VAULT;1.1;AES256
-          37353764393965363565313334386132383965623434383263363664636533356532613938363331
-          6336393339326566373831386166316465666332383332390a313039623463376133336361653533
-          63333163633134633463353430653961663230393730623636306334313066316636323665373932
-          3765636435343935630a656630653261636132373766656635653536356237306163633535643633
-          39663630346434343435306238393961393466663663313837666439653464633361326133663039
-          31346661323139666234326538353264363730386439633133386165653834333734333865386536
-          31363932363038336132616638386431306632306633643330343730363063643038313266653739
-          34306561623531306439666138306637336137373631383230376134343733346230383831353838
-          6665
+backup_server_ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 backup_login: backup
 backup_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
@@ -96,7 +85,9 @@ mysql_replication_password: !vault |
           35653538313431326535643531626537393336366139316132343432333034633165
 node_id: "{{ (ansible_port / 100) | int }}"
 
+haproxy_port: 88
 grafana_port: 3001
+prometheus_port: 9090
 
 keepalived_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
@@ -137,3 +128,25 @@ containers:
     port: 8004
   - name: agama-5
     port: 8005
+
+max_containers:
+  - name: agama-1
+    port: 8001
+  - name: agama-2
+    port: 8002
+  - name: agama-3
+    port: 8003
+  - name: agama-4
+    port: 8004
+  - name: agama-5
+    port: 8005
+  - name: agama-6
+    port: 8006
+  - name: agama-7
+    port: 8007
+  - name: agama-8
+    port: 8008
+  - name: agama-9
+    port: 8009
+  - name: agama-10
+    port: 8010

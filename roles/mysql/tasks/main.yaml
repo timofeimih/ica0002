@@ -1,7 +1,3 @@
-- include_role:
-    name: dns_record
-  vars:
-    dns_record: "mysql{{ inventory_hostname.replace(machine_name, '') }}"
 - name: Copy file .my.cnf
   template: 
     src: .my.cnf.j2
@@ -9,6 +5,7 @@
     owner: prometheus
     group: prometheus
     mode: '0600'
+  no_log: True
 - name: Copy file prometheus-mysqld-exporter
   copy: 
     src: prometheus-mysqld-exporter
@@ -20,6 +17,7 @@
     owner: backup
     group: backup
     mode: '0600'
+  no_log: True
 - name: Install MySQL-server
   apt:
     name: mysql-server
@@ -63,7 +61,7 @@
     state: present
 
 - service:
-    enabled: yes
+    enabled: true
     name: "{{ item }}"
     state: started
   loop:
@@ -107,3 +105,8 @@
   notify:
     - Reset MySQL source
     - Reset MySQL replica
+
+- include_role:
+    name: dns_record
+  vars:
+    dns_record: "mysql{{ inventory_hostname.replace(machine_name, '') }}"

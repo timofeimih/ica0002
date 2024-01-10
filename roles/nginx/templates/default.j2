@@ -2,18 +2,23 @@ server {
 	listen 80 default_server;
 	server_name agama;
 
+	{% if inventory_hostname in groups['agama'] %}
 	location / {
-		proxy_pass http://www-1:88;
+		proxy_pass http://localhost:{{ haproxy_port }};
 	}
+	{% endif %}
 
+	{%  if inventory_hostname in groups['monitoring'] %}
 	location /prometheus {
-		proxy_pass http://prometheus:9090;
+		proxy_pass http://localhost:{{ prometheus_port }};
 	}
 
 	location /grafana {
 		proxy_set_header Host $http_host;
-		proxy_pass http://grafana:{{ grafana_port }};
-	}
+		proxy_pass http://localhost:{{ grafana_port }};
+	}	
+	{% endif %}
+	
 }
 
 server {

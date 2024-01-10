@@ -53,7 +53,7 @@
   service:
     name: systemd-resolved
     state: stopped
-    enabled: true
+    enabled: false
 - name: Copy file resolv.conf.j2
   template:
     src: resolv.conf.j2
@@ -66,7 +66,7 @@
     state: present
 
 - service:
-    enabled: yes
+    enabled: true
     name: "{{ item }}"
     state: started
   loop:

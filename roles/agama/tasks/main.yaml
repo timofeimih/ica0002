@@ -16,19 +16,17 @@
     build:
       path: /opt/agama
 
-- name: Docker volume
-  community.docker.docker_volume:
-    name: "{{ item.name }}"
-  loop: "{{ containers }}"
 - name: Agama Docker container start
   community.docker.docker_container:
     name: "{{ item.name }}"
     image: agama
     published_ports: "{{ item.port }}:8000"
+    restart_policy: always
+    state: "{{ 'absent' if item not in containers else 'started' }}"
     env:
       AGAMA_DATABASE_URI=mysql+pymysql://{{ mysql_user }}:{{ mysql_password }}@{{ mysql_host }}/{{ mysql_database }}
   no_log: True
-  loop: "{{ containers }}"
+  loop: "{{ max_containers }}"
 
 - include_role:
     name: dns_record

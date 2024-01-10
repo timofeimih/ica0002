@@ -37,9 +37,9 @@
     state: present
 
 - name: Configurate rsyslog
-  copy:
-    src: 50-telegraf.conf
-    dest: /etc/rsyslog.d/
+  template:
+    src: 50-telegraf.conf.j2
+    dest: /etc/rsyslog.d/50-telegraf.conf
   notify:
     - Restart rsyslog
 

@@ -1,4 +1,4 @@
-- name: Add or modify backup A to 192.168.1.1"
+- name: Add or modify backup A"
   community.general.nsupdate:
     key_name: "nsupdate.key"
     key_algorithm: "hmac-sha256"
@@ -7,8 +7,7 @@
     zone: "{{ startup_name }}"
     record: "backup"
     value: "{{ backup_server_ip }}"
-  when: inventory_hostname == groups['dns_primary'][0]
-- name: "Add or modify ns-1 CNAME {{ groups['dns_secondary'][0] }}"
+- name: "Add or modify ns-1 CNAME groups['dns_servers']"
   community.general.nsupdate:
     key_name: "nsupdate.key"
     key_algorithm: "hmac-sha256"
@@ -16,17 +15,8 @@
     server: "{{ groups['dns_primary'][0] }}"
     zone: "{{ startup_name }}"
     type: "CNAME"
-    record: "ns-1"
-    value: "{{ groups['dns_secondary'][0]  }}"
-  when: inventory_hostname == groups['dns_primary'][0]
-- name: "Add or modify ns-1 CNAME {{ groups['dns_secondary'][0] }}"
-  community.general.nsupdate:
-    key_name: "nsupdate.key"
-    key_algorithm: "hmac-sha256"
-    key_secret: "{{ dns_update_key }}"
-    server: "{{ groups['dns_primary'][0] }}"
-    zone: "{{ startup_name }}"
-    type: "CNAME"
-    record: "ns-2"
-    value: "{{ inventory_hostname  }}"
-  when: inventory_hostname == groups['dns_primary'][0]
+    record: "ns-{{ i+1 }}"
+    value: "{{ item  }}"
+  loop: "{{ groups['dns_servers']  }}"
+  loop_control:
+    index_var: i

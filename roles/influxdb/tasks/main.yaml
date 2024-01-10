@@ -56,7 +56,7 @@
   notify:
     - Restart influxdb
 - service:
-    enabled: yes
+    enabled: true
     name: "{{ item }}"
     state: started
   loop:

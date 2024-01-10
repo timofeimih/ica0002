@@ -35,12 +35,13 @@
     dest: "/opt/grafana/provisioning/datasources/default.yaml"
   notify:
     Restart grafana
-    
+
 - name: Grafana Docker container
   community.docker.docker_container:
     name: grafana
     image: grafana/grafana
     published_ports: "{{ grafana_port }}:3000"
+    restart_policy: always
     volumes: 
       - /opt/grafana:/etc/grafana
 - include_role:

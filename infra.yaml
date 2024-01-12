@@ -9,11 +9,6 @@
     roles:
       - bind
     tags: bind
-  - name: DNS records setup
-    hosts: dns_primary
-    roles:
-      - dns_setup
-    tags: dns
   - name: Mysql setup
     hosts: db_servers
     roles: 
@@ -52,7 +47,6 @@
   - name: Web server setup
     hosts: web_servers
     roles:
-      # - uwsgi
       - nginx
     tags: n
   - name: HaProxy setup

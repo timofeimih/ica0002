@@ -1,4 +1,4 @@
-Fri Jan 12 05:58:08 AM EST 2024
+Wed Jan 17 08:52:16 AM EST 2024
 + hostname
 ubuntu-2204
 + ansible-playbook infra.yaml --diff
@@ -7,23 +7,23 @@ PLAY [Initial setup] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [timofeimih-2]
-ok: [timofeimih-1]
 ok: [timofeimih-3]
+ok: [timofeimih-1]
 
 TASK [init : Ansible ping module] **********************************************
-ok: [timofeimih-3]
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [init : Create user 'juri'] ***********************************************
+changed: [timofeimih-2]
 changed: [timofeimih-1]
 changed: [timofeimih-3]
-changed: [timofeimih-2]
 
 TASK [init : Create user 'roman'] **********************************************
-changed: [timofeimih-1]
 changed: [timofeimih-3]
 changed: [timofeimih-2]
+changed: [timofeimih-1]
 
 TASK [init : Set authorized keys taken from url for juri] **********************
 --- before: /home/juri/.ssh/.authorized_key
@@ -39,14 +39,14 @@ changed: [timofeimih-2]
 +ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/PLdlvr9Z8PyzMNsG17kF8PuVFyD+M30RvBe6CBNu+DRjSeKzeougyTVDydsWA/trjDBWQ26nfJmqevJh6woZJudqRCQNfUsF4IuM4C94hzgtTwzyNRtHrI8Pv18pcjJipzPyl5AEW2sqV0ABPDuI8gxcRWfkiF8TLoz2Q65qJe0rag0b9c8XSHyLP0/V9nsH2fjd1GLcCqe2lmKYNJppwN/BYc/D1/yiwMSqTxgK/XCUwJDTloxepjTvlq1P5GGqH8V238AHL/y1khAbXclERC9ropOcUhdDgeWGXCzFyMGd5qUyOgwbnFgMameKSuYptclhwo7MzlygfgGoK6RCyy3xDsnvFOyadWsxXmdnwv851JYLnmeMjMkDlF/NDA3uVKnDVTsDcPyAq+YdSmpI3BDw2MHRFqnWCM2SkW+euQNuTxl7ykrxkKM/U80BXGd1oL4Is7QDNS0y+c1VyJ0Rts5M1StshJakhidUrlqUjyJ/UK8ZuyaTMKgLial2k/k= 
 +ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCymJv1IlKRmhxboG4LPbSRGXf+IpHOQkdChFe4d1lyiq1KxQPcG8EI0k/pxWlTTSAmMx/GSlyhd8QNPIxWfaFKwoNTSVavD6w5WADyNkdz8IKjVgMVS2K7Vu5Qz/0p6HJYyNAeUUGMvNSOdAC9Oj5pPhCByO1L5zl+u3AE71vB1dXrUfQ9ZcoOm31uPIf5mgXm++r8ysppjhztFUeBv65IyQPzDJRgudmvclAn0iItrkIHAWnR5TSWxeMioSeF2oZgd8py7mwy3FUZ4f3Ed11kEC+mwtUpu6r7L1ezJ53OMTpiZB5rDXcFVF60E9em+bXnegSKRHjhKPZhVe+ysWTl1I65k0OyAwTViumfMa8emVdZp78i/BGHK5/nDsNYUFeKhzSD2R1Sd6TLDr+lUBGJc/zELNV/an5h2X4ZR1dlJ963UGBTBgQArLHes3i9nU5MS2AUBSmSKw3uc6Xjqnl6ze6fFv5uva/Erk4bOVB5JJGPi7ovnBzWXBB/MkzBKnc= 
 
-changed: [timofeimih-3]
+changed: [timofeimih-1]
 --- before: /home/juri/.ssh/.authorized_key
 +++ after: /home/juri/.ssh/.authorized_key
 @@ -0,0 +1,2 @@
 +ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/PLdlvr9Z8PyzMNsG17kF8PuVFyD+M30RvBe6CBNu+DRjSeKzeougyTVDydsWA/trjDBWQ26nfJmqevJh6woZJudqRCQNfUsF4IuM4C94hzgtTwzyNRtHrI8Pv18pcjJipzPyl5AEW2sqV0ABPDuI8gxcRWfkiF8TLoz2Q65qJe0rag0b9c8XSHyLP0/V9nsH2fjd1GLcCqe2lmKYNJppwN/BYc/D1/yiwMSqTxgK/XCUwJDTloxepjTvlq1P5GGqH8V238AHL/y1khAbXclERC9ropOcUhdDgeWGXCzFyMGd5qUyOgwbnFgMameKSuYptclhwo7MzlygfgGoK6RCyy3xDsnvFOyadWsxXmdnwv851JYLnmeMjMkDlF/NDA3uVKnDVTsDcPyAq+YdSmpI3BDw2MHRFqnWCM2SkW+euQNuTxl7ykrxkKM/U80BXGd1oL4Is7QDNS0y+c1VyJ0Rts5M1StshJakhidUrlqUjyJ/UK8ZuyaTMKgLial2k/k= 
 +ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCymJv1IlKRmhxboG4LPbSRGXf+IpHOQkdChFe4d1lyiq1KxQPcG8EI0k/pxWlTTSAmMx/GSlyhd8QNPIxWfaFKwoNTSVavD6w5WADyNkdz8IKjVgMVS2K7Vu5Qz/0p6HJYyNAeUUGMvNSOdAC9Oj5pPhCByO1L5zl+u3AE71vB1dXrUfQ9ZcoOm31uPIf5mgXm++r8ysppjhztFUeBv65IyQPzDJRgudmvclAn0iItrkIHAWnR5TSWxeMioSeF2oZgd8py7mwy3FUZ4f3Ed11kEC+mwtUpu6r7L1ezJ53OMTpiZB5rDXcFVF60E9em+bXnegSKRHjhKPZhVe+ysWTl1I65k0OyAwTViumfMa8emVdZp78i/BGHK5/nDsNYUFeKhzSD2R1Sd6TLDr+lUBGJc/zELNV/an5h2X4ZR1dlJ963UGBTBgQArLHes3i9nU5MS2AUBSmSKw3uc6Xjqnl6ze6fFv5uva/Erk4bOVB5JJGPi7ovnBzWXBB/MkzBKnc= 
 
-changed: [timofeimih-1]
+changed: [timofeimih-3]
 
 TASK [init : Set authorized keys taken from url for roman] *********************
 --- before: /home/roman/.ssh/.authorized_key
@@ -54,7 +54,7 @@ TASK [init : Set authorized keys taken from url for roman] *********************
 @@ -0,0 +1 @@
 +ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA5ulJ5RS0bMMOU12XT2xjTkyysAA35cecJl8Q/l7guIIHZQ0OXwXKIiOXzpCYC5m86Ph4VDs1G9+gicYUF43lzY5hxNowPqPH8nbNUYGPR3yKww0YCy8idu4QsI63B1slpWSsbqQJU0Dpy1dQpJUcE1x0+sKJkpRIQ4zdEF1+e7eAx2QFPz/c4n1CJyg34jmYySu4fz4xQHzqqRH5NfADQu0weIwGf7RiJGuDn4X4x1aa+KaMJ2IJDZ+FCTbRSx2KnwqlC8Gx/CeE8eXv3V044wzPOAt/+0kMYh1CzM/JYGftZlTdwGEqWaVTMy+be8igAMX/tcdXQP0Sy/VhPT2tWw== 
 
-changed: [timofeimih-1]
+changed: [timofeimih-3]
 --- before: /home/roman/.ssh/.authorized_key
 +++ after: /home/roman/.ssh/.authorized_key
 @@ -0,0 +1 @@
@@ -66,12 +66,12 @@ changed: [timofeimih-2]
 @@ -0,0 +1 @@
 +ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA5ulJ5RS0bMMOU12XT2xjTkyysAA35cecJl8Q/l7guIIHZQ0OXwXKIiOXzpCYC5m86Ph4VDs1G9+gicYUF43lzY5hxNowPqPH8nbNUYGPR3yKww0YCy8idu4QsI63B1slpWSsbqQJU0Dpy1dQpJUcE1x0+sKJkpRIQ4zdEF1+e7eAx2QFPz/c4n1CJyg34jmYySu4fz4xQHzqqRH5NfADQu0weIwGf7RiJGuDn4X4x1aa+KaMJ2IJDZ+FCTbRSx2KnwqlC8Gx/CeE8eXv3V044wzPOAt/+0kMYh1CzM/JYGftZlTdwGEqWaVTMy+be8igAMX/tcdXQP0Sy/VhPT2tWw== 
 
-changed: [timofeimih-3]
+changed: [timofeimih-1]
 
 TASK [init : Update APT cache] *************************************************
 changed: [timofeimih-3]
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [init : Install Prometheus-node-exporter] *********************************
 The following additional packages will be installed:
@@ -84,6 +84,17 @@ The following NEW packages will be installed:
   moreutils prometheus-node-exporter prometheus-node-exporter-collectors
   smartmontools
 0 upgraded, 8 newly installed, 0 to remove and 267 not upgraded.
+changed: [timofeimih-1]
+The following additional packages will be installed:
+  libio-pty-perl libipc-run-perl libtime-duration-perl libtimedate-perl
+  moreutils prometheus-node-exporter-collectors smartmontools
+Suggested packages:
+  gsmartcontrol smart-notifier mailx | mailutils
+The following NEW packages will be installed:
+  libio-pty-perl libipc-run-perl libtime-duration-perl libtimedate-perl
+  moreutils prometheus-node-exporter prometheus-node-exporter-collectors
+  smartmontools
+0 upgraded, 8 newly installed, 0 to remove and 267 not upgraded.
 changed: [timofeimih-3]
 The following additional packages will be installed:
   libio-pty-perl libipc-run-perl libtime-duration-perl libtimedate-perl
@@ -96,32 +107,21 @@ The following NEW packages will be installed:
   smartmontools
 0 upgraded, 8 newly installed, 0 to remove and 267 not upgraded.
 changed: [timofeimih-2]
-The following additional packages will be installed:
-  libio-pty-perl libipc-run-perl libtime-duration-perl libtimedate-perl
-  moreutils prometheus-node-exporter-collectors smartmontools
-Suggested packages:
-  gsmartcontrol smart-notifier mailx | mailutils
-The following NEW packages will be installed:
-  libio-pty-perl libipc-run-perl libtime-duration-perl libtimedate-perl
-  moreutils prometheus-node-exporter prometheus-node-exporter-collectors
-  smartmontools
-0 upgraded, 8 newly installed, 0 to remove and 267 not upgraded.
-changed: [timofeimih-1]
 
 TASK [init : Service is prometheus-node-exporter running] **********************
-ok: [timofeimih-2]
-ok: [timofeimih-3]
 ok: [timofeimih-1]
+ok: [timofeimih-3]
+ok: [timofeimih-2]
 
 TASK [init : Install ca-certificates] ******************************************
 The following packages will be upgraded:
   ca-certificates
 1 upgraded, 0 newly installed, 0 to remove and 266 not upgraded.
-changed: [timofeimih-1]
+changed: [timofeimih-2]
 The following packages will be upgraded:
   ca-certificates
 1 upgraded, 0 newly installed, 0 to remove and 266 not upgraded.
-changed: [timofeimih-2]
+changed: [timofeimih-1]
 The following packages will be upgraded:
   ca-certificates
 1 upgraded, 0 newly installed, 0 to remove and 266 not upgraded.
@@ -129,22 +129,7 @@ changed: [timofeimih-3]
 
 TASK [init : Configurate rsyslog] **********************************************
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmprfyv12bs/50-telegraf.conf.j2
-@@ -0,0 +1,9 @@
-+$ActionQueueType LinkedList # use asynchronous processing
-+$ActionQueueFileName srvrfwd # set file name, also enables disk mode
-+$ActionResumeRetryCount -1 # infinite retries on insert failure
-+$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
-+
-+# forward over tcp with octet framing according to RFC 5425
-+#*.* @@(o)localhost:6514;RSYSLOG_SyslogProtocol23Format
-+
-+*.* @timofeimih-3:6514;RSYSLOG_SyslogProtocol23Format
-\ No newline at end of file
-
-changed: [timofeimih-1]
---- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmp0oev2v3s/50-telegraf.conf.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpjcmfyzg4/50-telegraf.conf.j2
 @@ -0,0 +1,9 @@
 +$ActionQueueType LinkedList # use asynchronous processing
 +$ActionQueueFileName srvrfwd # set file name, also enables disk mode
@@ -159,7 +144,22 @@ changed: [timofeimih-1]
 
 changed: [timofeimih-3]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmp7kom4_yu/50-telegraf.conf.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpgtsubp15/50-telegraf.conf.j2
+@@ -0,0 +1,9 @@
++$ActionQueueType LinkedList # use asynchronous processing
++$ActionQueueFileName srvrfwd # set file name, also enables disk mode
++$ActionResumeRetryCount -1 # infinite retries on insert failure
++$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
++
++# forward over tcp with octet framing according to RFC 5425
++#*.* @@(o)localhost:6514;RSYSLOG_SyslogProtocol23Format
++
++*.* @timofeimih-3:6514;RSYSLOG_SyslogProtocol23Format
+\ No newline at end of file
+
+changed: [timofeimih-1]
+--- before
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmp7wue1ids/50-telegraf.conf.j2
 @@ -0,0 +1,9 @@
 +$ActionQueueType LinkedList # use asynchronous processing
 +$ActionQueueFileName srvrfwd # set file name, also enables disk mode
@@ -175,22 +175,22 @@ changed: [timofeimih-3]
 changed: [timofeimih-2]
 
 TASK [init : Create user 'backup'] *********************************************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
 changed: [timofeimih-3]
+changed: [timofeimih-2]
 
 TASK [init : Copy known_hosts] *************************************************
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpy0r7a2wz/known_hosts.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpe7qpb37h/known_hosts.j2
 @@ -0,0 +1,3 @@
 +192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup.timofeimih.pro ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 \ No newline at end of file
 
-changed: [timofeimih-1]
+changed: [timofeimih-2]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpn9nlegzn/known_hosts.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmprgfve6lf/known_hosts.j2
 @@ -0,0 +1,3 @@
 +192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
@@ -199,14 +199,14 @@ changed: [timofeimih-1]
 
 changed: [timofeimih-3]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmph40tljub/known_hosts.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpdsqpsvcg/known_hosts.j2
 @@ -0,0 +1,3 @@
 +192.168.42.132 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 +backup.timofeimih.pro ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 \ No newline at end of file
 
-changed: [timofeimih-2]
+changed: [timofeimih-1]
 
 TASK [init : Create a directory if it does not exists /home/backup/restore] ****
 --- before
@@ -236,7 +236,7 @@ changed: [timofeimih-1]
 +    "state": "directory"
  }
 
-changed: [timofeimih-3]
+changed: [timofeimih-2]
 --- before
 +++ after
 @@ -1,6 +1,6 @@
@@ -250,7 +250,7 @@ changed: [timofeimih-3]
 +    "state": "directory"
  }
 
-changed: [timofeimih-2]
+changed: [timofeimih-3]
 
 TASK [init : Install duplicity] ************************************************
 The following additional packages will be installed:
@@ -263,7 +263,7 @@ The following NEW packages will be installed:
   duplicity librsync2 python3-bcrypt python3-fasteners python3-future
   python3-lockfile python3-monotonic python3-paramiko
 0 upgraded, 8 newly installed, 0 to remove and 266 not upgraded.
-changed: [timofeimih-3]
+changed: [timofeimih-2]
 The following additional packages will be installed:
   librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
   python3-monotonic python3-paramiko
@@ -285,7 +285,7 @@ The following NEW packages will be installed:
   duplicity librsync2 python3-bcrypt python3-fasteners python3-future
   python3-lockfile python3-monotonic python3-paramiko
 0 upgraded, 8 newly installed, 0 to remove and 266 not upgraded.
-changed: [timofeimih-2]
+changed: [timofeimih-3]
 
 RUNNING HANDLER [init : Restart rsyslog] ***************************************
 changed: [timofeimih-3]
@@ -309,6 +309,16 @@ The following NEW packages will be installed:
 The following packages will be upgraded:
   bind9-dnsutils bind9-libs
 2 upgraded, 4 newly installed, 0 to remove and 264 not upgraded.
+changed: [timofeimih-3]
+The following additional packages will be installed:
+  bind9-dnsutils bind9-libs bind9-utils dns-root-data python3-ply
+Suggested packages:
+  bind-doc resolvconf python-ply-doc
+The following NEW packages will be installed:
+  bind9 bind9-utils dns-root-data python3-ply
+The following packages will be upgraded:
+  bind9-dnsutils bind9-libs
+2 upgraded, 4 newly installed, 0 to remove and 264 not upgraded.
 changed: [timofeimih-2]
 The following additional packages will be installed:
   bind9-dnsutils bind9-libs bind9-utils dns-root-data python3-ply
@@ -320,16 +330,6 @@ The following packages will be upgraded:
   bind9-dnsutils bind9-libs
 2 upgraded, 4 newly installed, 0 to remove and 264 not upgraded.
 changed: [timofeimih-1]
-The following additional packages will be installed:
-  bind9-dnsutils bind9-libs bind9-utils dns-root-data python3-ply
-Suggested packages:
-  bind-doc resolvconf python-ply-doc
-The following NEW packages will be installed:
-  bind9 bind9-utils dns-root-data python3-ply
-The following packages will be upgraded:
-  bind9-dnsutils bind9-libs
-2 upgraded, 4 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-3]
 
 TASK [bind : Copy file named.conf.options] *************************************
 changed: [timofeimih-2]
@@ -338,55 +338,7 @@ changed: [timofeimih-3]
 
 TASK [bind : Copy file named.conf.local] ***************************************
 --- before: /etc/bind/named.conf.local
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpob3caw5y/named.conf.local.j2
-@@ -1,8 +1,13 @@
--//
--// Do any local configuration here
--//
-+zone "timofeimih.pro"{
-+	type secondary;
-+	allow-transfer {key transfer.key;};
-+	masters{
-+					192.168.42.155;
-+			};
-+    file "db.timofeimih.pro";
-+};
- 
--// Consider adding the 1918 zones here, if they are not used in your
--// organization
--//include "/etc/bind/zones.rfc1918";
-+server 192.168.42.155{
-+	keys {transfer.key;};
-+};
- 
-
-changed: [timofeimih-1]
---- before: /etc/bind/named.conf.local
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpeamu8d3_/named.conf.local.j2
-@@ -1,8 +1,13 @@
--//
--// Do any local configuration here
--//
-+zone "timofeimih.pro"{
-+	type secondary;
-+	allow-transfer {key transfer.key;};
-+	masters{
-+					192.168.42.155;
-+			};
-+    file "db.timofeimih.pro";
-+};
- 
--// Consider adding the 1918 zones here, if they are not used in your
--// organization
--//include "/etc/bind/zones.rfc1918";
-+server 192.168.42.155{
-+	keys {transfer.key;};
-+};
- 
-
-changed: [timofeimih-2]
---- before: /etc/bind/named.conf.local
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpni9pwgij/named.conf.local.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpfcl5v935/named.conf.local.j2
 @@ -1,8 +1,7 @@
 -//
 -// Do any local configuration here
@@ -404,16 +356,64 @@ changed: [timofeimih-2]
 -
 
 changed: [timofeimih-3]
+--- before: /etc/bind/named.conf.local
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmp4z3ngx94/named.conf.local.j2
+@@ -1,8 +1,13 @@
+-//
+-// Do any local configuration here
+-//
++zone "timofeimih.pro"{
++	type secondary;
++	allow-transfer {key transfer.key;};
++	masters{
++					192.168.43.70;
++			};
++    file "db.timofeimih.pro";
++};
+ 
+-// Consider adding the 1918 zones here, if they are not used in your
+-// organization
+-//include "/etc/bind/zones.rfc1918";
++server 192.168.43.70{
++	keys {transfer.key;};
++};
+ 
+
+changed: [timofeimih-1]
+--- before: /etc/bind/named.conf.local
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmp3cw8wmpx/named.conf.local.j2
+@@ -1,8 +1,13 @@
+-//
+-// Do any local configuration here
+-//
++zone "timofeimih.pro"{
++	type secondary;
++	allow-transfer {key transfer.key;};
++	masters{
++					192.168.43.70;
++			};
++    file "db.timofeimih.pro";
++};
+ 
+-// Consider adding the 1918 zones here, if they are not used in your
+-// organization
+-//include "/etc/bind/zones.rfc1918";
++server 192.168.43.70{
++	keys {transfer.key;};
++};
+ 
+
+changed: [timofeimih-2]
 
 TASK [bind : Create a directory if it does not exists /var/cache/bind] *********
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [bind : stat] *************************************************************
 ok: [timofeimih-1]
-ok: [timofeimih-3]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [bind : stat] *************************************************************
 ok: [timofeimih-1]
@@ -422,7 +422,7 @@ ok: [timofeimih-3]
 
 TASK [bind : Copy file db.timofeimih.pro] **************************************
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpfrrj3q6e/db.timofeimih.pro.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpwaer85hb/db.timofeimih.pro.j2
 @@ -0,0 +1,15 @@
 +$TTL	604800
 +timofeimih.pro.	IN	SOA	timofeimih-3.timofeimih.pro. admin.timofeimih.pro. (
@@ -436,13 +436,13 @@ TASK [bind : Copy file db.timofeimih.pro] **************************************
 +timofeimih.pro. IN	NS	timofeimih-2
 +timofeimih.pro. IN	NS	timofeimih-3
 +
-+timofeimih-1	IN	A	192.168.42.21
-+timofeimih-2	IN	A	192.168.42.117
-+timofeimih-3	IN	A	192.168.42.155
++timofeimih-1	IN	A	192.168.43.108
++timofeimih-2	IN	A	192.168.43.169
++timofeimih-3	IN	A	192.168.43.70
 
-changed: [timofeimih-2]
+changed: [timofeimih-1]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpwge_av7w/db.timofeimih.pro.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmp463aeygh/db.timofeimih.pro.j2
 @@ -0,0 +1,15 @@
 +$TTL	604800
 +timofeimih.pro.	IN	SOA	timofeimih-3.timofeimih.pro. admin.timofeimih.pro. (
@@ -456,13 +456,13 @@ changed: [timofeimih-2]
 +timofeimih.pro. IN	NS	timofeimih-2
 +timofeimih.pro. IN	NS	timofeimih-3
 +
-+timofeimih-1	IN	A	192.168.42.21
-+timofeimih-2	IN	A	192.168.42.117
-+timofeimih-3	IN	A	192.168.42.155
++timofeimih-1	IN	A	192.168.43.108
++timofeimih-2	IN	A	192.168.43.169
++timofeimih-3	IN	A	192.168.43.70
 
 changed: [timofeimih-3]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmplb_qqidh/db.timofeimih.pro.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmp166ymx48/db.timofeimih.pro.j2
 @@ -0,0 +1,15 @@
 +$TTL	604800
 +timofeimih.pro.	IN	SOA	timofeimih-3.timofeimih.pro. admin.timofeimih.pro. (
@@ -476,15 +476,15 @@ changed: [timofeimih-3]
 +timofeimih.pro. IN	NS	timofeimih-2
 +timofeimih.pro. IN	NS	timofeimih-3
 +
-+timofeimih-1	IN	A	192.168.42.21
-+timofeimih-2	IN	A	192.168.42.117
-+timofeimih-3	IN	A	192.168.42.155
++timofeimih-1	IN	A	192.168.43.108
++timofeimih-2	IN	A	192.168.43.169
++timofeimih-3	IN	A	192.168.43.70
 
-changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [bind : Copy file db.rev] *************************************************
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmplnzj_zfy/db.rev.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpxgumcq72/db.rev.j2
 @@ -0,0 +1,14 @@
 +$TTL	604800
 +168.192.in-addr.arpa.	IN	SOA	timofeimih-3.timofeimih.pro. timofei.timofeimih.pro. (
@@ -497,13 +497,13 @@ TASK [bind : Copy file db.rev] *************************************************
 +168.192.in-addr.arpa. IN	NS	timofeimih-1.timofeimih.pro.
 +168.192.in-addr.arpa. IN	NS	timofeimih-2.timofeimih.pro.
 +168.192.in-addr.arpa. IN	NS	timofeimih-3.timofeimih.pro.
-+21.42	IN	PTR	timofeimih-1.timofeimih.pro.
-+117.42	IN	PTR	timofeimih-2.timofeimih.pro.
-+155.42	IN	PTR	timofeimih-3.timofeimih.pro.
++108.43	IN	PTR	timofeimih-1.timofeimih.pro.
++169.43	IN	PTR	timofeimih-2.timofeimih.pro.
++70.43	IN	PTR	timofeimih-3.timofeimih.pro.
 
 changed: [timofeimih-1]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmphy01ry0x/db.rev.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmp5iywfj5q/db.rev.j2
 @@ -0,0 +1,14 @@
 +$TTL	604800
 +168.192.in-addr.arpa.	IN	SOA	timofeimih-3.timofeimih.pro. timofei.timofeimih.pro. (
@@ -516,13 +516,13 @@ changed: [timofeimih-1]
 +168.192.in-addr.arpa. IN	NS	timofeimih-1.timofeimih.pro.
 +168.192.in-addr.arpa. IN	NS	timofeimih-2.timofeimih.pro.
 +168.192.in-addr.arpa. IN	NS	timofeimih-3.timofeimih.pro.
-+21.42	IN	PTR	timofeimih-1.timofeimih.pro.
-+117.42	IN	PTR	timofeimih-2.timofeimih.pro.
-+155.42	IN	PTR	timofeimih-3.timofeimih.pro.
++108.43	IN	PTR	timofeimih-1.timofeimih.pro.
++169.43	IN	PTR	timofeimih-2.timofeimih.pro.
++70.43	IN	PTR	timofeimih-3.timofeimih.pro.
 
 changed: [timofeimih-3]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmp_3peiyrb/db.rev.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpf_5gjju4/db.rev.j2
 @@ -0,0 +1,14 @@
 +$TTL	604800
 +168.192.in-addr.arpa.	IN	SOA	timofeimih-3.timofeimih.pro. timofei.timofeimih.pro. (
@@ -535,9 +535,9 @@ changed: [timofeimih-3]
 +168.192.in-addr.arpa. IN	NS	timofeimih-1.timofeimih.pro.
 +168.192.in-addr.arpa. IN	NS	timofeimih-2.timofeimih.pro.
 +168.192.in-addr.arpa. IN	NS	timofeimih-3.timofeimih.pro.
-+21.42	IN	PTR	timofeimih-1.timofeimih.pro.
-+117.42	IN	PTR	timofeimih-2.timofeimih.pro.
-+155.42	IN	PTR	timofeimih-3.timofeimih.pro.
++108.43	IN	PTR	timofeimih-1.timofeimih.pro.
++169.43	IN	PTR	timofeimih-2.timofeimih.pro.
++70.43	IN	PTR	timofeimih-3.timofeimih.pro.
 
 changed: [timofeimih-2]
 
@@ -549,20 +549,20 @@ changed: [timofeimih-1]
 The following NEW packages will be installed:
   prometheus-bind-exporter
 0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-2]
+changed: [timofeimih-3]
 The following NEW packages will be installed:
   prometheus-bind-exporter
 0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-3]
+changed: [timofeimih-2]
 
 TASK [bind : systemd-resolved service is stopped] ******************************
-changed: [timofeimih-1]
 changed: [timofeimih-2]
+changed: [timofeimih-1]
 changed: [timofeimih-3]
 
 TASK [bind : Copy file resolv.conf.j2] *****************************************
 --- before: /etc/resolv.conf
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpm_pgjk0s/resolv.conf.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpje5v55k2/resolv.conf.j2
 @@ -1,19 +1,3 @@
 -# This file is managed by man:systemd-resolved(8). Do not edit.
 -#
@@ -584,39 +584,12 @@ TASK [bind : Copy file resolv.conf.j2] *****************************************
 -options edns0 trust-ad
 -search openstacklocal
 +search timofeimih.pro
-+nameserver 192.168.42.21
-+nameserver 192.168.42.117
-
-changed: [timofeimih-2]
---- before: /etc/resolv.conf
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpmm1lcj_b/resolv.conf.j2
-@@ -1,19 +1,3 @@
--# This file is managed by man:systemd-resolved(8). Do not edit.
--#
--# This is a dynamic resolv.conf file for connecting local clients to the
--# internal DNS stub resolver of systemd-resolved. This file lists all
--# configured search domains.
--#
--# Run "resolvectl status" to see details about the uplink DNS servers
--# currently in use.
--#
--# Third party programs must not access this file directly, but only through the
--# symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,
--# replace this symlink by a static file or a different symlink.
--#
--# See man:systemd-resolved.service(8) for details about the supported modes of
--# operation for /etc/resolv.conf.
--
--nameserver 127.0.0.53
--options edns0 trust-ad
--search openstacklocal
-+search timofeimih.pro
-+nameserver 192.168.42.21
-+nameserver 192.168.42.117
++nameserver 192.168.43.108
++nameserver 192.168.43.169
 
 changed: [timofeimih-1]
 --- before: /etc/resolv.conf
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpwg1azo72/resolv.conf.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpnzymqemv/resolv.conf.j2
 @@ -1,19 +1,3 @@
 -# This file is managed by man:systemd-resolved(8). Do not edit.
 -#
@@ -638,8 +611,35 @@ changed: [timofeimih-1]
 -options edns0 trust-ad
 -search openstacklocal
 +search timofeimih.pro
-+nameserver 192.168.42.21
-+nameserver 192.168.42.117
++nameserver 192.168.43.108
++nameserver 192.168.43.169
+
+changed: [timofeimih-2]
+--- before: /etc/resolv.conf
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpbsrqdrfx/resolv.conf.j2
+@@ -1,19 +1,3 @@
+-# This file is managed by man:systemd-resolved(8). Do not edit.
+-#
+-# This is a dynamic resolv.conf file for connecting local clients to the
+-# internal DNS stub resolver of systemd-resolved. This file lists all
+-# configured search domains.
+-#
+-# Run "resolvectl status" to see details about the uplink DNS servers
+-# currently in use.
+-#
+-# Third party programs must not access this file directly, but only through the
+-# symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,
+-# replace this symlink by a static file or a different symlink.
+-#
+-# See man:systemd-resolved.service(8) for details about the supported modes of
+-# operation for /etc/resolv.conf.
+-
+-nameserver 127.0.0.53
+-options edns0 trust-ad
+-search openstacklocal
++search timofeimih.pro
++nameserver 192.168.43.108
++nameserver 192.168.43.169
 
 changed: [timofeimih-3]
 
@@ -647,30 +647,30 @@ TASK [bind : Install python3-dnspython] ****************************************
 The following NEW packages will be installed:
   python3-dnspython
 0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
+changed: [timofeimih-3]
+The following NEW packages will be installed:
+  python3-dnspython
+0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
 changed: [timofeimih-1]
 The following NEW packages will be installed:
   python3-dnspython
 0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
 changed: [timofeimih-2]
-The following NEW packages will be installed:
-  python3-dnspython
-0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-3]
 
 TASK [bind : service] **********************************************************
 ok: [timofeimih-1] => (item=bind9)
 ok: [timofeimih-2] => (item=bind9)
 ok: [timofeimih-3] => (item=bind9)
 ok: [timofeimih-1] => (item=prometheus-bind-exporter)
-ok: [timofeimih-2] => (item=prometheus-bind-exporter)
 ok: [timofeimih-3] => (item=prometheus-bind-exporter)
+ok: [timofeimih-2] => (item=prometheus-bind-exporter)
 
 TASK [bind : Flush handlers] ***************************************************
 
 RUNNING HANDLER [bind : Restart bind9] *****************************************
+changed: [timofeimih-1]
 changed: [timofeimih-3]
 changed: [timofeimih-2]
-changed: [timofeimih-1]
 
 RUNNING HANDLER [bind : RNDC reload] *******************************************
 changed: [timofeimih-3]
@@ -685,9 +685,9 @@ changed: [timofeimih-3]
 TASK [include_role : dns_record] ***********************************************
 
 TASK [dns_record : Add or modify ns-1.timofeimih.pro CNAME to timofeimih-1] ****
-changed: [timofeimih-3]
 changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-3]
 
 PLAY [Mysql setup] *************************************************************
 
@@ -716,8 +716,8 @@ changed: [timofeimih-1]
 changed: [timofeimih-2]
 
 TASK [mysql : Copy file .my.cnf to /home/backup] *******************************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [mysql : Install MySQL-server] ********************************************
 The following additional packages will be installed:
@@ -763,21 +763,21 @@ Suggested packages:
 The following NEW packages will be installed:
   python3-pymysql
 0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-2]
+changed: [timofeimih-1]
 Suggested packages:
   python-pymysql-doc
 The following NEW packages will be installed:
   python3-pymysql
 0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [mysql : MySQL database] **************************************************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [mysql : Copy file override.cnf and restart MySQL] ************************
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpxl6_o883/override.cnf.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpvjmd1_2k/override.cnf.j2
 @@ -0,0 +1,8 @@
 +[mysqld]
 +bind-address = *
@@ -786,12 +786,12 @@ TASK [mysql : Copy file override.cnf and restart MySQL] ************************
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 21
++server-id = 364
 \ No newline at end of file
 
 changed: [timofeimih-1]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmp6qtg5p5p/override.cnf.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpuv975nl4/override.cnf.j2
 @@ -0,0 +1,8 @@
 +[mysqld]
 +bind-address = *
@@ -800,7 +800,7 @@ changed: [timofeimih-1]
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 117
++server-id = 425
 \ No newline at end of file
 
 changed: [timofeimih-2]
@@ -810,8 +810,8 @@ changed: [timofeimih-2]
 changed: [timofeimih-1]
 
 TASK [mysql : Create MySQL user dedicated for exporter] ************************
-changed: [timofeimih-1]
 changed: [timofeimih-2]
+changed: [timofeimih-1]
 
 TASK [mysql : Install prometheus-mysqld-exporter] ******************************
 The following additional packages will be installed:
@@ -864,27 +864,27 @@ changed: [timofeimih-1]
 changed: [timofeimih-2]
 
 TASK [mysql : Create MySQL backup user] ****************************************
-changed: [timofeimih-1]
 changed: [timofeimih-2]
+changed: [timofeimih-1]
 
 TASK [mysql : Copy file mysql-backup] ******************************************
+changed: [timofeimih-1]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpzypa3269/mysql-backup.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpae8rxjib/mysql-backup.j2
 @@ -0,0 +1,3 @@
 +10 */4 * * *  backup  mysqldump agama > /home/backup/mysql/agama.sql
 +15 */4 * * 0  backup  duplicity --no-encryption full /home/backup/mysql/ rsync://timofeimih@backup.timofeimih.pro/mysql
 +15 */4 * * 1-6  backup  duplicity --no-encryption incremental /home/backup/mysql/ rsync://timofeimih@backup.timofeimih.pro/mysql
 
 changed: [timofeimih-2]
-changed: [timofeimih-1]
 
 TASK [mysql : Create MySQL replication user] ***********************************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [mysql : Read-only settings for replica server] ***************************
-changed: [timofeimih-1]
 changed: [timofeimih-2]
+changed: [timofeimih-1]
 
 TASK [include_role : dns_record] ***********************************************
 
@@ -937,7 +937,7 @@ changed: [timofeimih-3]
 
 TASK [prometheus : Copy file prometheus.yml] ***********************************
 --- before: /etc/prometheus/prometheus.yml
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmp19fdz9tt/prometheus.yml.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpkvkqfqlq/prometheus.yml.j2
 @@ -4,22 +4,6 @@
    scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
    evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
@@ -961,7 +961,7 @@ TASK [prometheus : Copy file prometheus.yml] ***********************************
  
  # A scrape configuration containing exactly one endpoint to scrape:
  # Here it's Prometheus itself.
-@@ -33,12 +17,68 @@
+@@ -33,12 +17,66 @@
  
      # metrics_path defaults to '/metrics'
      # scheme defaults to 'http'.
@@ -1007,8 +1007,6 @@ TASK [prometheus : Copy file prometheus.yml] ***********************************
 +
 +    static_configs:
 +      - targets: 
-+                - timofeimih-1:9113
-+                - timofeimih-2:9113
 +                - timofeimih-3:9113
 +          
 +    
@@ -1040,11 +1038,11 @@ changed: [timofeimih-3]
 
 TASK [prometheus : Copy file prometheus] ***************************************
 --- before: /etc/default/prometheus
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmph3s6blbp/prometheus.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpelkz6_e0/prometheus.j2
 @@ -1,5 +1,5 @@
  # Set the command-line arguments to pass to the server.
 -ARGS=""
-+ARGS='--web.external-url="http://193.40.156.67:15580/prometheus"'
++ARGS='--web.external-url="http://193.40.156.67:32680/prometheus"'
  
  # Prometheus supports the following options:
  #  --config.file="/etc/prometheus/prometheus.yml"
@@ -1865,7 +1863,7 @@ changed: [timofeimih-3]
 
 TASK [influxdb : Template file influxdb-backup] ********************************
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmp325wtlbg/influxdb-backup.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmplojc4qtc/influxdb-backup.j2
 @@ -0,0 +1,3 @@
 +0 */4 * * *  backup  rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
 +10 */4 * * 0  backup  duplicity --no-encryption full /home/backup/influxdb/ rsync://timofeimih@backup.timofeimih.pro/influxdb
@@ -1907,17 +1905,6 @@ Suggested packages:
 The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
   python3-websocket runc ubuntu-fan
-0 upgraded, 10 newly installed, 0 to remove and 265 not upgraded.
-changed: [timofeimih-3]
-The following additional packages will be installed:
-  bridge-utils containerd dnsmasq-base libidn11 pigz python3-websocket runc
-  ubuntu-fan
-Suggested packages:
-  ifupdown aufs-tools cgroupfs-mount | cgroup-lite debootstrap docker-doc
-  rinse zfs-fuse | zfsutils
-The following NEW packages will be installed:
-  bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
-  python3-websocket runc ubuntu-fan
 0 upgraded, 10 newly installed, 0 to remove and 264 not upgraded.
 changed: [timofeimih-2]
 The following additional packages will be installed:
@@ -1931,6 +1918,17 @@ The following NEW packages will be installed:
   python3-websocket runc ubuntu-fan
 0 upgraded, 10 newly installed, 0 to remove and 264 not upgraded.
 changed: [timofeimih-1]
+The following additional packages will be installed:
+  bridge-utils containerd dnsmasq-base libidn11 pigz python3-websocket runc
+  ubuntu-fan
+Suggested packages:
+  ifupdown aufs-tools cgroupfs-mount | cgroup-lite debootstrap docker-doc
+  rinse zfs-fuse | zfsutils
+The following NEW packages will be installed:
+  bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
+  python3-websocket runc ubuntu-fan
+0 upgraded, 10 newly installed, 0 to remove and 265 not upgraded.
+changed: [timofeimih-3]
 
 TASK [docker : Docker service] *************************************************
 ok: [timofeimih-3]
@@ -1953,7 +1951,7 @@ TASK [agama : Create a directory if it does not exists /opt/agama] *************
 +    "state": "directory"
  }
 
-changed: [timofeimih-2]
+changed: [timofeimih-1]
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -1963,38 +1961,38 @@ changed: [timofeimih-2]
 +    "state": "directory"
  }
 
-changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [agama : Download agama.py and Dockerfile] ********************************
-changed: [timofeimih-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
 changed: [timofeimih-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
+changed: [timofeimih-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
 changed: [timofeimih-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
 changed: [timofeimih-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
 
 TASK [agama : Build Docker image] **********************************************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [agama : Agama Docker container start] ************************************
-changed: [timofeimih-2] => (item=None)
 changed: [timofeimih-1] => (item=None)
 changed: [timofeimih-2] => (item=None)
 changed: [timofeimih-1] => (item=None)
 changed: [timofeimih-2] => (item=None)
 changed: [timofeimih-1] => (item=None)
+changed: [timofeimih-2] => (item=None)
 changed: [timofeimih-2] => (item=None)
 changed: [timofeimih-1] => (item=None)
 changed: [timofeimih-2] => (item=None)
 ok: [timofeimih-2] => (item=None)
-ok: [timofeimih-2] => (item=None)
 changed: [timofeimih-1] => (item=None)
 ok: [timofeimih-2] => (item=None)
+ok: [timofeimih-1] => (item=None)
+ok: [timofeimih-2] => (item=None)
+ok: [timofeimih-1] => (item=None)
 ok: [timofeimih-2] => (item=None)
 ok: [timofeimih-1] => (item=None)
 ok: [timofeimih-2] => (item=None)
 changed: [timofeimih-2]
-ok: [timofeimih-1] => (item=None)
-ok: [timofeimih-1] => (item=None)
 ok: [timofeimih-1] => (item=None)
 ok: [timofeimih-1] => (item=None)
 changed: [timofeimih-1]
@@ -2002,8 +2000,8 @@ changed: [timofeimih-1]
 TASK [include_role : dns_record] ***********************************************
 
 TASK [dns_record : Add or modify www-1.timofeimih.pro CNAME to timofeimih-1] ***
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 PLAY [Grafana setup] ***********************************************************
 
@@ -4773,38 +4771,8 @@ PLAY [Web server setup] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [timofeimih-3]
-ok: [timofeimih-1]
-ok: [timofeimih-2]
 
 TASK [nginx : Install nginx] ***************************************************
-The following additional packages will be installed:
-  fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
-  libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
-  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5
-  libwebp6 libxpm4 nginx-common nginx-core
-Suggested packages:
-  libgd-tools fcgiwrap nginx-doc ssl-cert
-The following NEW packages will be installed:
-  fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
-  libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
-  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5
-  libwebp6 libxpm4 nginx nginx-common nginx-core
-0 upgraded, 17 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-1]
-The following additional packages will be installed:
-  fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
-  libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
-  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5
-  libwebp6 libxpm4 nginx-common nginx-core
-Suggested packages:
-  libgd-tools fcgiwrap nginx-doc ssl-cert
-The following NEW packages will be installed:
-  fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
-  libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
-  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5
-  libwebp6 libxpm4 nginx nginx-common nginx-core
-0 upgraded, 17 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-2]
 The following additional packages will be installed:
   fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
   libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
@@ -4821,43 +4789,25 @@ The following NEW packages will be installed:
 changed: [timofeimih-3]
 
 TASK [nginx : Create a directory if it does not exists /etc/nginx/sites-enabled] ***
-ok: [timofeimih-1]
 ok: [timofeimih-3]
-ok: [timofeimih-2]
 
 TASK [nginx : Copy file default and restart nginx] *****************************
-changed: [timofeimih-1]
-changed: [timofeimih-2]
 changed: [timofeimih-3]
 
 TASK [nginx : Flush handlers] **************************************************
 
 RUNNING HANDLER [nginx : Restart nginx] ****************************************
 changed: [timofeimih-3]
-changed: [timofeimih-1]
-changed: [timofeimih-2]
 
 TASK [nginx : Install prometheus-nginx-exporter] *******************************
-The following NEW packages will be installed:
-  prometheus-nginx-exporter
-0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-2]
-The following NEW packages will be installed:
-  prometheus-nginx-exporter
-0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-1]
 The following NEW packages will be installed:
   prometheus-nginx-exporter
 0 upgraded, 1 newly installed, 0 to remove and 265 not upgraded.
 changed: [timofeimih-3]
 
 TASK [nginx : service] *********************************************************
-ok: [timofeimih-2] => (item=nginx)
-ok: [timofeimih-1] => (item=nginx)
 ok: [timofeimih-3] => (item=nginx)
-ok: [timofeimih-2] => (item=prometheus-nginx-exporter)
 ok: [timofeimih-3] => (item=prometheus-nginx-exporter)
-ok: [timofeimih-1] => (item=prometheus-nginx-exporter)
 
 PLAY [HaProxy setup] ***********************************************************
 
@@ -4873,7 +4823,7 @@ Suggested packages:
 The following NEW packages will be installed:
   haproxy liblua5.3-0
 0 upgraded, 2 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-2]
+changed: [timofeimih-1]
 The following additional packages will be installed:
   liblua5.3-0
 Suggested packages:
@@ -4881,11 +4831,53 @@ Suggested packages:
 The following NEW packages will be installed:
   haproxy liblua5.3-0
 0 upgraded, 2 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [haproxy : template] ******************************************************
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpuz0vinir/haproxy.cfg.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmp7j5s08dw/haproxy.cfg.j2
+@@ -8,14 +8,6 @@
+ 	group haproxy
+ 	daemon
+ 
+-	# Default SSL material locations
+-	ca-base /etc/ssl/certs
+-	crt-base /etc/ssl/private
+-
+-	# See: https://ssl-config.mozilla.org/#server=haproxy&server-version=2.0.3&config=intermediate
+-        ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
+-        ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
+-        ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
+ 
+ defaults
+ 	log	global
+@@ -32,3 +24,22 @@
+ 	errorfile 502 /etc/haproxy/errors/502.http
+ 	errorfile 503 /etc/haproxy/errors/503.http
+ 	errorfile 504 /etc/haproxy/errors/504.http
++
++listen my_ha_frontend
++	bind :88
++	stats enable
++	stats uri /stats
++	stats refresh 5s
++        		server agama-1-timofeimih-1 timofeimih-1:8001 check
++    		server agama-2-timofeimih-1 timofeimih-1:8002 check
++    		server agama-3-timofeimih-1 timofeimih-1:8003 check
++    		server agama-4-timofeimih-1 timofeimih-1:8004 check
++    		server agama-5-timofeimih-1 timofeimih-1:8005 check
++    		
++	    		server agama-1-timofeimih-2 timofeimih-2:8001 check
++    		server agama-2-timofeimih-2 timofeimih-2:8002 check
++    		server agama-3-timofeimih-2 timofeimih-2:8003 check
++    		server agama-4-timofeimih-2 timofeimih-2:8004 check
++    		server agama-5-timofeimih-2 timofeimih-2:8005 check
++    		
++	
+
+changed: [timofeimih-1]
+--- before: /etc/haproxy/haproxy.cfg
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpjv3hx940/haproxy.cfg.j2
 @@ -8,14 +8,6 @@
  	group haproxy
  	daemon
@@ -4926,62 +4918,20 @@ TASK [haproxy : template] ******************************************************
 +	
 
 changed: [timofeimih-2]
---- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpoohleybv/haproxy.cfg.j2
-@@ -8,14 +8,6 @@
- 	group haproxy
- 	daemon
- 
--	# Default SSL material locations
--	ca-base /etc/ssl/certs
--	crt-base /etc/ssl/private
--
--	# See: https://ssl-config.mozilla.org/#server=haproxy&server-version=2.0.3&config=intermediate
--        ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
--        ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
--        ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
- 
- defaults
- 	log	global
-@@ -32,3 +24,22 @@
- 	errorfile 502 /etc/haproxy/errors/502.http
- 	errorfile 503 /etc/haproxy/errors/503.http
- 	errorfile 504 /etc/haproxy/errors/504.http
-+
-+listen my_ha_frontend
-+	bind :88
-+	stats enable
-+	stats uri /stats
-+	stats refresh 5s
-+        		server agama-1-timofeimih-1 timofeimih-1:8001 check
-+    		server agama-2-timofeimih-1 timofeimih-1:8002 check
-+    		server agama-3-timofeimih-1 timofeimih-1:8003 check
-+    		server agama-4-timofeimih-1 timofeimih-1:8004 check
-+    		server agama-5-timofeimih-1 timofeimih-1:8005 check
-+    		
-+	    		server agama-1-timofeimih-2 timofeimih-2:8001 check
-+    		server agama-2-timofeimih-2 timofeimih-2:8002 check
-+    		server agama-3-timofeimih-2 timofeimih-2:8003 check
-+    		server agama-4-timofeimih-2 timofeimih-2:8004 check
-+    		server agama-5-timofeimih-2 timofeimih-2:8005 check
-+    		
-+	
-
-changed: [timofeimih-1]
 
 TASK [haproxy : apt] ***********************************************************
 The following NEW packages will be installed:
   prometheus-haproxy-exporter
 0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-2]
+changed: [timofeimih-1]
 The following NEW packages will be installed:
   prometheus-haproxy-exporter
 0 upgraded, 1 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [haproxy : template] ******************************************************
 --- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmp3znevwwf/prometheus-haproxy-exporter.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpwwmrkbca/prometheus-haproxy-exporter.j2
 @@ -2,7 +2,7 @@
  # Due to shell scaping, to pass backslashes for regexes, you need to double
  # them (\\d for \d). If running under systemd, you need to double them again
@@ -5001,7 +4951,7 @@ TASK [haproxy : template] ******************************************************
 
 changed: [timofeimih-1]
 --- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmp3t0hzmm5/prometheus-haproxy-exporter.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmp0x_qb7i3/prometheus-haproxy-exporter.j2
 @@ -2,7 +2,7 @@
  # Due to shell scaping, to pass backslashes for regexes, you need to double
  # them (\\d for \d). If running under systemd, you need to double them again
@@ -5022,30 +4972,30 @@ changed: [timofeimih-1]
 changed: [timofeimih-2]
 
 TASK [haproxy : service] *******************************************************
-ok: [timofeimih-2] => (item=haproxy)
 ok: [timofeimih-1] => (item=haproxy)
+ok: [timofeimih-2] => (item=haproxy)
 ok: [timofeimih-1] => (item=prometheus-haproxy-exporter)
 ok: [timofeimih-2] => (item=prometheus-haproxy-exporter)
 
 TASK [include_role : dns_record] ***********************************************
 
 TASK [dns_record : Add or modify lb-1.timofeimih.pro CNAME to timofeimih-1] ****
-changed: [timofeimih-1]
 changed: [timofeimih-2]
+changed: [timofeimih-1]
 
 RUNNING HANDLER [haproxy : Restart haproxy] ************************************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 RUNNING HANDLER [haproxy : Restart prometheus-haproxy-exporter] ****************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 PLAY [Keepalived setup] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [keepalived : apt] ********************************************************
 The following additional packages will be installed:
@@ -5057,7 +5007,7 @@ The following NEW packages will be installed:
   ipvsadm keepalived libmysqlclient21 libnl-3-200 libnl-genl-3-200
   libsensors-config libsensors5 libsnmp-base libsnmp35
 0 upgraded, 9 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-2]
+changed: [timofeimih-1]
 The following additional packages will be installed:
   ipvsadm libmysqlclient21 libnl-3-200 libnl-genl-3-200 libsensors-config
   libsensors5 libsnmp-base libsnmp35
@@ -5067,19 +5017,19 @@ The following NEW packages will be installed:
   ipvsadm keepalived libmysqlclient21 libnl-3-200 libnl-genl-3-200
   libsensors-config libsensors5 libsnmp-base libsnmp35
 0 upgraded, 9 newly installed, 0 to remove and 264 not upgraded.
-changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [keepalived : Add user 'keepalived_script '] ******************************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [keepalived : template] ***************************************************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [keepalived : template] ***************************************************
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmphg76qjfy/check_haproxy.sh.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmpz03gcrsh/check_haproxy.sh.j2
 @@ -0,0 +1,2 @@
 +#!/bin/bash
 +ss -ntl | grep -q ':88 '
@@ -5087,7 +5037,7 @@ TASK [keepalived : template] ***************************************************
 
 changed: [timofeimih-1]
 --- before
-+++ after: /home/ubuntu/.ansible/tmp/ansible-local-488200809qq__k/tmpfst8rv3r/check_haproxy.sh.j2
++++ after: /home/ubuntu/.ansible/tmp/ansible-local-5385v5nr4rzo/tmp7qn8td9d/check_haproxy.sh.j2
 @@ -0,0 +1,2 @@
 +#!/bin/bash
 +ss -ntl | grep -q ':88 '
@@ -5122,8 +5072,8 @@ changed: [timofeimih-1]
 changed: [timofeimih-2]
 
 TASK [keepalived : chmod keepalived-exporter exporter] *************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [keepalived : Copy keepalived-exporter.service] ***************************
 --- before
@@ -5140,7 +5090,7 @@ TASK [keepalived : Copy keepalived-exporter.service] ***************************
 +[Install]
 +WantedBy=multi-user.target
 
-changed: [timofeimih-2]
+changed: [timofeimih-1]
 --- before
 +++ after: /home/ubuntu/Desktop/ica0002/roles/keepalived/files/keepalived-exporter.service
 @@ -0,0 +1,10 @@
@@ -5155,25 +5105,25 @@ changed: [timofeimih-2]
 +[Install]
 +WantedBy=multi-user.target
 
-changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 TASK [keepalived : service] ****************************************************
-changed: [timofeimih-2] => (item=keepalived)
 changed: [timofeimih-1] => (item=keepalived)
-changed: [timofeimih-2] => (item=keepalived-exporter)
+changed: [timofeimih-2] => (item=keepalived)
 changed: [timofeimih-1] => (item=keepalived-exporter)
+changed: [timofeimih-2] => (item=keepalived-exporter)
 
 RUNNING HANDLER [keepalived : Restart keepalived] ******************************
-changed: [timofeimih-2]
 changed: [timofeimih-1]
+changed: [timofeimih-2]
 
 RUNNING HANDLER [keepalived : Restart keepalived-exporter] *********************
 changed: [timofeimih-1]
 changed: [timofeimih-2]
 
 PLAY RECAP *********************************************************************
-timofeimih-1               : ok=90   changed=70   unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
-timofeimih-2               : ok=90   changed=70   unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+timofeimih-1               : ok=83   changed=66   unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+timofeimih-2               : ok=83   changed=66   unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 timofeimih-3               : ok=87   changed=70   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 + ansible-playbook infra.yaml --diff
@@ -5181,8 +5131,8 @@ timofeimih-3               : ok=87   changed=70   unreachable=0    failed=0    s
 PLAY [Initial setup] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [init : Ansible ping module] **********************************************
@@ -5191,29 +5141,29 @@ ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [init : Create user 'juri'] ***********************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
+ok: [timofeimih-3]
 ok: [timofeimih-2]
 
 TASK [init : Create user 'roman'] **********************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [init : Set authorized keys taken from url for juri] **********************
-ok: [timofeimih-2]
 ok: [timofeimih-3]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [init : Set authorized keys taken from url for roman] *********************
-ok: [timofeimih-3]
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [init : Update APT cache] *************************************************
+ok: [timofeimih-1]
 ok: [timofeimih-3]
 ok: [timofeimih-2]
-ok: [timofeimih-1]
 
 TASK [init : Install Prometheus-node-exporter] *********************************
 ok: [timofeimih-1]
@@ -5221,46 +5171,46 @@ ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [init : Service is prometheus-node-exporter running] **********************
+ok: [timofeimih-1]
 ok: [timofeimih-3]
 ok: [timofeimih-2]
-ok: [timofeimih-1]
 
 TASK [init : Install ca-certificates] ******************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [init : Configurate rsyslog] **********************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [init : Create user 'backup'] *********************************************
-ok: [timofeimih-3]
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
+ok: [timofeimih-3]
 
 TASK [init : Copy known_hosts] *************************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [init : Create a directory if it does not exists /home/backup/restore] ****
-ok: [timofeimih-3]
 ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [init : Install duplicity] ************************************************
+ok: [timofeimih-1]
 ok: [timofeimih-2]
 ok: [timofeimih-3]
-ok: [timofeimih-1]
 
 PLAY [DNS server setup] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [timofeimih-1]
 ok: [timofeimih-3]
 ok: [timofeimih-2]
-ok: [timofeimih-1]
 
 TASK [bind : Install bind9] ****************************************************
 ok: [timofeimih-1]
@@ -5269,23 +5219,23 @@ ok: [timofeimih-3]
 
 TASK [bind : Copy file named.conf.options] *************************************
 ok: [timofeimih-1]
-ok: [timofeimih-3]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [bind : Copy file named.conf.local] ***************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [bind : Create a directory if it does not exists /var/cache/bind] *********
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [bind : stat] *************************************************************
+ok: [timofeimih-1]
 ok: [timofeimih-2]
 ok: [timofeimih-3]
-ok: [timofeimih-1]
 
 TASK [bind : stat] *************************************************************
 ok: [timofeimih-1]
@@ -5303,9 +5253,9 @@ skipping: [timofeimih-2]
 skipping: [timofeimih-3]
 
 TASK [bind : Install prometheus-bind-exporter] *********************************
-ok: [timofeimih-2]
-ok: [timofeimih-1]
 ok: [timofeimih-3]
+ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [bind : systemd-resolved service is stopped] ******************************
 ok: [timofeimih-3]
@@ -5313,22 +5263,22 @@ ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [bind : Copy file resolv.conf.j2] *****************************************
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 ok: [timofeimih-1]
-ok: [timofeimih-2]
 
 TASK [bind : Install python3-dnspython] ****************************************
 ok: [timofeimih-1]
-ok: [timofeimih-2]
 ok: [timofeimih-3]
+ok: [timofeimih-2]
 
 TASK [bind : service] **********************************************************
+ok: [timofeimih-1] => (item=bind9)
 ok: [timofeimih-2] => (item=bind9)
 ok: [timofeimih-3] => (item=bind9)
-ok: [timofeimih-1] => (item=bind9)
 ok: [timofeimih-1] => (item=prometheus-bind-exporter)
-ok: [timofeimih-2] => (item=prometheus-bind-exporter)
 ok: [timofeimih-3] => (item=prometheus-bind-exporter)
+ok: [timofeimih-2] => (item=prometheus-bind-exporter)
 
 TASK [bind : Flush handlers] ***************************************************
 
@@ -5340,31 +5290,31 @@ ok: [timofeimih-3]
 TASK [include_role : dns_record] ***********************************************
 
 TASK [dns_record : Add or modify ns-1.timofeimih.pro CNAME to timofeimih-1] ****
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 ok: [timofeimih-1]
-ok: [timofeimih-2]
 
 PLAY [Mysql setup] *************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : Copy file .my.cnf] ***********************************************
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 
 TASK [mysql : Copy file prometheus-mysqld-exporter] ****************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : Copy file .my.cnf to /home/backup] *******************************
 ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [mysql : Install MySQL-server] ********************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : Install python3-pymysql] *****************************************
 ok: [timofeimih-1]
@@ -5387,34 +5337,34 @@ ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [mysql : Install prometheus-mysqld-exporter] ******************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : service] *********************************************************
-ok: [timofeimih-2] => (item=mysql)
 ok: [timofeimih-1] => (item=mysql)
-ok: [timofeimih-2] => (item=prometheus-mysqld-exporter)
+ok: [timofeimih-2] => (item=mysql)
 ok: [timofeimih-1] => (item=prometheus-mysqld-exporter)
+ok: [timofeimih-2] => (item=prometheus-mysqld-exporter)
 
 TASK [mysql : Create a directory if it does not exists /home/backup/mysql] *****
 ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [mysql : Create MySQL backup user] ****************************************
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 
 TASK [mysql : Copy file mysql-backup] ******************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : Create MySQL replication user] ***********************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : Read-only settings for replica server] ***************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [include_role : dns_record] ***********************************************
 
@@ -5522,14 +5472,14 @@ ok: [timofeimih-3]
 PLAY [Docker setup] ************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
+ok: [timofeimih-3]
 ok: [timofeimih-2]
 
 TASK [docker : Install docker.io] **********************************************
 ok: [timofeimih-1]
-ok: [timofeimih-2]
 ok: [timofeimih-3]
+ok: [timofeimih-2]
 
 TASK [docker : Docker service] *************************************************
 ok: [timofeimih-1]
@@ -5543,32 +5493,25 @@ ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [agama : Create a directory if it does not exists /opt/agama] *************
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 
 TASK [agama : Download agama.py and Dockerfile] ********************************
-ok: [timofeimih-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
 ok: [timofeimih-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
-ok: [timofeimih-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
+ok: [timofeimih-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
 ok: [timofeimih-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
+ok: [timofeimih-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
 
 TASK [agama : Build Docker image] **********************************************
 ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [agama : Agama Docker container start] ************************************
-ok: [timofeimih-2] => (item=None)
 ok: [timofeimih-1] => (item=None)
-ok: [timofeimih-2] => (item=None)
-ok: [timofeimih-1] => (item=None)
-ok: [timofeimih-1] => (item=None)
-ok: [timofeimih-2] => (item=None)
 ok: [timofeimih-2] => (item=None)
 ok: [timofeimih-1] => (item=None)
 ok: [timofeimih-2] => (item=None)
 ok: [timofeimih-1] => (item=None)
-ok: [timofeimih-1] => (item=None)
-ok: [timofeimih-2] => (item=None)
 ok: [timofeimih-2] => (item=None)
 ok: [timofeimih-1] => (item=None)
 ok: [timofeimih-2] => (item=None)
@@ -5576,15 +5519,22 @@ ok: [timofeimih-1] => (item=None)
 ok: [timofeimih-2] => (item=None)
 ok: [timofeimih-1] => (item=None)
 ok: [timofeimih-2] => (item=None)
-ok: [timofeimih-2]
+ok: [timofeimih-1] => (item=None)
+ok: [timofeimih-2] => (item=None)
+ok: [timofeimih-1] => (item=None)
+ok: [timofeimih-2] => (item=None)
+ok: [timofeimih-1] => (item=None)
+ok: [timofeimih-2] => (item=None)
 ok: [timofeimih-1] => (item=None)
 ok: [timofeimih-1]
+ok: [timofeimih-2] => (item=None)
+ok: [timofeimih-2]
 
 TASK [include_role : dns_record] ***********************************************
 
 TASK [dns_record : Add or modify www-1.timofeimih.pro CNAME to timofeimih-1] ***
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 PLAY [Grafana setup] ***********************************************************
 
@@ -5621,45 +5571,31 @@ ok: [timofeimih-3]
 PLAY [Web server setup] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-1]
-ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [nginx : Install nginx] ***************************************************
 ok: [timofeimih-3]
-ok: [timofeimih-1]
-ok: [timofeimih-2]
 
 TASK [nginx : Create a directory if it does not exists /etc/nginx/sites-enabled] ***
 ok: [timofeimih-3]
-ok: [timofeimih-1]
-ok: [timofeimih-2]
 
 TASK [nginx : Copy file default and restart nginx] *****************************
-ok: [timofeimih-1]
 ok: [timofeimih-3]
-ok: [timofeimih-2]
 
 TASK [nginx : Flush handlers] **************************************************
 
 TASK [nginx : Install prometheus-nginx-exporter] *******************************
-ok: [timofeimih-1]
-ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [nginx : service] *********************************************************
-ok: [timofeimih-1] => (item=nginx)
 ok: [timofeimih-3] => (item=nginx)
-ok: [timofeimih-2] => (item=nginx)
-ok: [timofeimih-1] => (item=prometheus-nginx-exporter)
 ok: [timofeimih-3] => (item=prometheus-nginx-exporter)
-ok: [timofeimih-2] => (item=prometheus-nginx-exporter)
 
 PLAY [HaProxy setup] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [haproxy : apt] ***********************************************************
 ok: [timofeimih-1]
@@ -5686,22 +5622,22 @@ ok: [timofeimih-2] => (item=prometheus-haproxy-exporter)
 TASK [include_role : dns_record] ***********************************************
 
 TASK [dns_record : Add or modify lb-1.timofeimih.pro CNAME to timofeimih-1] ****
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 PLAY [Keepalived setup] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 
 TASK [keepalived : apt] ********************************************************
 ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [keepalived : Add user 'keepalived_script '] ******************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [keepalived : template] ***************************************************
 ok: [timofeimih-1]
@@ -5712,20 +5648,20 @@ ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [keepalived : chmod check_haproxy.sh] *************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [keepalived : Extract keepalived-exporter-1.2.0.linux-amd64.tar.gz] *******
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [keepalived : chmod keepalived-exporter exporter] *************************
 ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [keepalived : Copy keepalived-exporter.service] ***************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [keepalived : service] ****************************************************
 ok: [timofeimih-1] => (item=keepalived)
@@ -5734,24 +5670,24 @@ ok: [timofeimih-2] => (item=keepalived-exporter)
 ok: [timofeimih-1] => (item=keepalived-exporter)
 
 PLAY RECAP *********************************************************************
-timofeimih-1               : ok=78   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
-timofeimih-2               : ok=78   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+timofeimih-1               : ok=72   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+timofeimih-2               : ok=72   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 timofeimih-3               : ok=74   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 
 + ansible all -b -m reboot -a test_command=uptime
-timofeimih-3 | CHANGED => {
-    "changed": true,
-    "elapsed": 39,
-    "rebooted": true
-}
 timofeimih-2 | CHANGED => {
     "changed": true,
-    "elapsed": 46,
+    "elapsed": 61,
+    "rebooted": true
+}
+timofeimih-3 | CHANGED => {
+    "changed": true,
+    "elapsed": 64,
     "rebooted": true
 }
 timofeimih-1 | CHANGED => {
     "changed": true,
-    "elapsed": 50,
+    "elapsed": 64,
     "rebooted": true
 }
 + ansible-playbook infra.yaml --diff
@@ -5760,13 +5696,13 @@ PLAY [Initial setup] ***********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [timofeimih-3]
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [init : Ansible ping module] **********************************************
 ok: [timofeimih-3]
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 
 TASK [init : Create user 'juri'] ***********************************************
 ok: [timofeimih-2]
@@ -5779,43 +5715,43 @@ ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [init : Set authorized keys taken from url for juri] **********************
-ok: [timofeimih-2]
 ok: [timofeimih-3]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [init : Set authorized keys taken from url for roman] *********************
+ok: [timofeimih-3]
 ok: [timofeimih-1]
 ok: [timofeimih-2]
-ok: [timofeimih-3]
 
 TASK [init : Update APT cache] *************************************************
-ok: [timofeimih-1]
-ok: [timofeimih-2]
 ok: [timofeimih-3]
+ok: [timofeimih-2]
+ok: [timofeimih-1]
 
 TASK [init : Install Prometheus-node-exporter] *********************************
-ok: [timofeimih-1]
-ok: [timofeimih-3]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
+ok: [timofeimih-1]
 
 TASK [init : Service is prometheus-node-exporter running] **********************
-ok: [timofeimih-3]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 ok: [timofeimih-1]
 
 TASK [init : Install ca-certificates] ******************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [init : Configurate rsyslog] **********************************************
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 ok: [timofeimih-3]
 
 TASK [init : Create user 'backup'] *********************************************
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 ok: [timofeimih-3]
 
 TASK [init : Copy known_hosts] *************************************************
@@ -5830,25 +5766,25 @@ ok: [timofeimih-3]
 
 TASK [init : Install duplicity] ************************************************
 ok: [timofeimih-1]
-ok: [timofeimih-3]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 PLAY [DNS server setup] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
+ok: [timofeimih-3]
 ok: [timofeimih-2]
 
 TASK [bind : Install bind9] ****************************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [bind : Copy file named.conf.options] *************************************
+ok: [timofeimih-1]
 ok: [timofeimih-3]
 ok: [timofeimih-2]
-ok: [timofeimih-1]
 
 TASK [bind : Copy file named.conf.local] ***************************************
 ok: [timofeimih-1]
@@ -5861,9 +5797,9 @@ ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [bind : stat] *************************************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [bind : stat] *************************************************************
 ok: [timofeimih-1]
@@ -5882,31 +5818,31 @@ skipping: [timofeimih-3]
 
 TASK [bind : Install prometheus-bind-exporter] *********************************
 ok: [timofeimih-1]
-ok: [timofeimih-3]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [bind : systemd-resolved service is stopped] ******************************
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 ok: [timofeimih-1]
-ok: [timofeimih-2]
 
 TASK [bind : Copy file resolv.conf.j2] *****************************************
-ok: [timofeimih-3]
 ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-3]
 
 TASK [bind : Install python3-dnspython] ****************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
 ok: [timofeimih-3]
+ok: [timofeimih-2]
 
 TASK [bind : service] **********************************************************
 ok: [timofeimih-1] => (item=bind9)
 ok: [timofeimih-2] => (item=bind9)
 ok: [timofeimih-3] => (item=bind9)
-ok: [timofeimih-3] => (item=prometheus-bind-exporter)
-ok: [timofeimih-2] => (item=prometheus-bind-exporter)
 ok: [timofeimih-1] => (item=prometheus-bind-exporter)
+ok: [timofeimih-2] => (item=prometheus-bind-exporter)
+ok: [timofeimih-3] => (item=prometheus-bind-exporter)
 
 TASK [bind : Flush handlers] ***************************************************
 
@@ -5918,9 +5854,9 @@ ok: [timofeimih-3]
 TASK [include_role : dns_record] ***********************************************
 
 TASK [dns_record : Add or modify ns-1.timofeimih.pro CNAME to timofeimih-1] ****
-ok: [timofeimih-1]
 ok: [timofeimih-3]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 
 PLAY [Mysql setup] *************************************************************
 
@@ -5929,24 +5865,24 @@ ok: [timofeimih-2]
 ok: [timofeimih-1]
 
 TASK [mysql : Copy file .my.cnf] ***********************************************
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 
 TASK [mysql : Copy file prometheus-mysqld-exporter] ****************************
 ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [mysql : Copy file .my.cnf to /home/backup] *******************************
-ok: [timofeimih-1]
 ok: [timofeimih-2]
+ok: [timofeimih-1]
 
 TASK [mysql : Install MySQL-server] ********************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : Install python3-pymysql] *****************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : MySQL database] **************************************************
 ok: [timofeimih-1]
@@ -5965,18 +5901,18 @@ ok: [timofeimih-2]
 ok: [timofeimih-1]
 
 TASK [mysql : Install prometheus-mysqld-exporter] ******************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : service] *********************************************************
-ok: [timofeimih-2] => (item=mysql)
 ok: [timofeimih-1] => (item=mysql)
+ok: [timofeimih-2] => (item=mysql)
 ok: [timofeimih-1] => (item=prometheus-mysqld-exporter)
 ok: [timofeimih-2] => (item=prometheus-mysqld-exporter)
 
 TASK [mysql : Create a directory if it does not exists /home/backup/mysql] *****
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [mysql : Create MySQL backup user] ****************************************
 ok: [timofeimih-2]
@@ -5997,8 +5933,8 @@ ok: [timofeimih-2]
 TASK [include_role : dns_record] ***********************************************
 
 TASK [dns_record : Add or modify mysql-1.timofeimih.pro CNAME to timofeimih-1] ***
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 PLAY [Prometheus setup] ********************************************************
 
@@ -6105,13 +6041,13 @@ ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [docker : Install docker.io] **********************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [docker : Docker service] *************************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 PLAY [Agama setup] *************************************************************
@@ -6127,12 +6063,12 @@ ok: [timofeimih-2]
 TASK [agama : Download agama.py and Dockerfile] ********************************
 ok: [timofeimih-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
 ok: [timofeimih-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/agama.py)
-ok: [timofeimih-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
 ok: [timofeimih-2] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
+ok: [timofeimih-1] => (item=https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile)
 
 TASK [agama : Build Docker image] **********************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [agama : Agama Docker container start] ************************************
 ok: [timofeimih-1] => (item=None)
@@ -6199,39 +6135,25 @@ ok: [timofeimih-3]
 PLAY [Web server setup] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-2]
 ok: [timofeimih-3]
-ok: [timofeimih-1]
 
 TASK [nginx : Install nginx] ***************************************************
 ok: [timofeimih-3]
-ok: [timofeimih-1]
-ok: [timofeimih-2]
 
 TASK [nginx : Create a directory if it does not exists /etc/nginx/sites-enabled] ***
-ok: [timofeimih-1]
-ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [nginx : Copy file default and restart nginx] *****************************
-ok: [timofeimih-1]
 ok: [timofeimih-3]
-ok: [timofeimih-2]
 
 TASK [nginx : Flush handlers] **************************************************
 
 TASK [nginx : Install prometheus-nginx-exporter] *******************************
-ok: [timofeimih-1]
-ok: [timofeimih-2]
 ok: [timofeimih-3]
 
 TASK [nginx : service] *********************************************************
-ok: [timofeimih-1] => (item=nginx)
-ok: [timofeimih-2] => (item=nginx)
 ok: [timofeimih-3] => (item=nginx)
-ok: [timofeimih-1] => (item=prometheus-nginx-exporter)
 ok: [timofeimih-3] => (item=prometheus-nginx-exporter)
-ok: [timofeimih-2] => (item=prometheus-nginx-exporter)
 
 PLAY [HaProxy setup] ***********************************************************
 
@@ -6252,14 +6174,14 @@ ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [haproxy : template] ******************************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [haproxy : service] *******************************************************
-ok: [timofeimih-2] => (item=haproxy)
 ok: [timofeimih-1] => (item=haproxy)
-ok: [timofeimih-1] => (item=prometheus-haproxy-exporter)
+ok: [timofeimih-2] => (item=haproxy)
 ok: [timofeimih-2] => (item=prometheus-haproxy-exporter)
+ok: [timofeimih-1] => (item=prometheus-haproxy-exporter)
 
 TASK [include_role : dns_record] ***********************************************
 
@@ -6270,24 +6192,24 @@ ok: [timofeimih-2]
 PLAY [Keepalived setup] ********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [keepalived : apt] ********************************************************
 ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [keepalived : Add user 'keepalived_script '] ******************************
-ok: [timofeimih-2]
-ok: [timofeimih-1]
-
-TASK [keepalived : template] ***************************************************
 ok: [timofeimih-1]
 ok: [timofeimih-2]
 
 TASK [keepalived : template] ***************************************************
-ok: [timofeimih-2]
 ok: [timofeimih-1]
+ok: [timofeimih-2]
+
+TASK [keepalived : template] ***************************************************
+ok: [timofeimih-1]
+ok: [timofeimih-2]
 
 TASK [keepalived : chmod check_haproxy.sh] *************************************
 ok: [timofeimih-1]
@@ -6312,9 +6234,9 @@ ok: [timofeimih-1] => (item=keepalived-exporter)
 ok: [timofeimih-2] => (item=keepalived-exporter)
 
 PLAY RECAP *********************************************************************
-timofeimih-1               : ok=78   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
-timofeimih-2               : ok=78   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+timofeimih-1               : ok=72   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+timofeimih-2               : ok=72   changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 timofeimih-3               : ok=74   changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
 
 + date
-Fri Jan 12 06:20:46 AM EST 2024
+Wed Jan 17 09:13:52 AM EST 2024

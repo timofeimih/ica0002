@@ -1,12 +1,6 @@
 server {
 	listen 80 default_server;
-	server_name agama;
-
-	{% if inventory_hostname in groups['agama'] %}
-	location / {
-		proxy_pass http://localhost:{{ haproxy_port }};
-	}
-	{% endif %}
+	server_name monitoring;
 
 	{%  if inventory_hostname in groups['monitoring'] %}
 	location /prometheus {

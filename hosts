@@ -1,6 +1,6 @@
-timofeimih-1 ansible_host=193.40.156.67 ansible_port=1322 ansible_user=ubuntu
-timofeimih-2 ansible_host=193.40.156.67 ansible_port=13522 ansible_user=ubuntu
-timofeimih-3 ansible_host=193.40.156.67 ansible_port=2222 ansible_user=ubuntu
+timofeimih-1 ansible_host=193.40.156.67 ansible_port=36422 ansible_user=ubuntu
+timofeimih-2 ansible_host=193.40.156.67 ansible_port=42522 ansible_user=ubuntu
+timofeimih-3 ansible_host=193.40.156.67 ansible_port=32622 ansible_user=ubuntu
 
 [main_stack]
 timofeimih-1
@@ -26,8 +26,6 @@ timofeimih-2
 timofeimih-3
 
 [web_servers]
-timofeimih-1
-timofeimih-2
 timofeimih-3
 
 [monitoring]

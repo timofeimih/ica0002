@@ -1,8 +1,8 @@
 startup_name: timofeimih.pro
 machine_name: timofeimih
 
-mysql_host: "{{ groups['db_servers'] | first }}"
-mysql_backup_host: "{{ groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host) }}"
+mysql_host: "mysql{{ (groups['db_servers'] | first).replace(machine_name, '') }}"
+mysql_backup_host: "mysql{{ (groups['db_servers'] | reject('eq', mysql_host) | first | default(mysql_host)).replace(machine_name, '') }}"
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -117,6 +117,13 @@ dns_transfer_key: !vault |
           39363562656431376139643564636431613163616237373631346431373031653565613263303162
           3239333431666263353662396533373863383061613834333533
 
+haproxy_auth: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          61393861643332313066363335363736383561646635353061343064636266336138666664663136
+          3565373731613365633236393633393163313934636235380a326665396238323361366432306537
+          30663663313862313665373763356539663932636334313762663831366266323138376564653036
+          3035623463643236630a396234313838343063333232663263396166656533663831353062616633
+          32663462353566356538616465643137303232323231636438613631396163653132
 containers:
   - name: agama-1
     port: 8001

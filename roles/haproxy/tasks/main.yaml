@@ -4,6 +4,7 @@
 - template:
     dest: /etc/haproxy/haproxy.cfg
     src: haproxy.cfg.j2
+  # no_log: True
   notify: Restart haproxy
 - apt:
     name: prometheus-haproxy-exporter

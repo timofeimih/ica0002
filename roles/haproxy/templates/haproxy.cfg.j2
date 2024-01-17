@@ -30,9 +30,10 @@ listen my_ha_frontend
 	stats enable
 	stats uri /stats
 	stats refresh 5s
+	stats auth {{ haproxy_auth }}
     {% for vm in groups['agama'] %}
     	{% for agama in containers %}
-	server {{ agama.name }}-{{ vm }} {{ vm }}:{{ agama.port }} check
+	server {{ agama.name }}-www{{ vm.replace(machine_name, '') }} www{{ vm.replace(machine_name, '') }}:{{ agama.port }} check
     	{% endfor %}
 	
 	{% endfor %}

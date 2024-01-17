@@ -15,8 +15,13 @@
   notify:
     Restart prometheus
 
+
+- service:
+    enabled: true
+    name: prometheus
+    state: started
+
 - include_role:
     name: dns_record
   vars:
     dns_record: prometheus
-    server: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
